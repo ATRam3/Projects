@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="https://i.imgur.com/OBvATsG.png" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <!--=============== SWIPER CSS ===============-->
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+
+   <link rel="stylesheet" href="assets/css/styles.css">
+   
+   <title>Delicious Pizza - Online Ordering</title>
+   
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <div class="header__container">
+         <div class="logo">
+            <h1>
+                <img src="assets/img/logo-pizza.svg" alt="Pizza Logo">
+                <span>Pizza</span>
+            </h1>
+        </div>
+
+        <nav class="nav">
+            <ul class="nav__item">
+                <li><a href="#home" class="nav__link active-link">Home</a></li>
+                <li><a href="#about" class="nav__link">About us</a></li>
+                <li><a href="#menu" class="nav__link">Menu</a></li>
+                <li><a href="#order" class="nav__link">Order</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+            <div class="nav__close">
+                <button class="close-button">
+                    <i class="ri-close-large-line"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Cart icon with counter -->
+        <div class="cart-icon" id="cart-icon">
+            <i class="ri-shopping-bag-line" style="font-size: 1.5rem;"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+
+        <div class="menu__toggle">
+            <button class="toggle-button">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+      </div>
+   </header>
+
+   <!-- Cart Panel -->
+   <div class="cart-panel" id="cart-panel">
+       <div class="cart-header">
+           <h3>Your Cart</h3>
+           <i class="ri-close-line cart-close" id="cart-close"></i>
+       </div>
+       <div class="cart-items" id="cart-items">
+           <!-- Cart items will be dynamically inserted here -->
+       </div>
+       <div class="cart-footer">
+           <div class="cart-subtotal">
+               <span>Subtotal</span>
+               <span id="cart-subtotal">$0.00</span>
+           </div>
+           <div class="cart-delivery-fee">
+               <span>Delivery Fee</span>
+               <span>$2.99</span>
+           </div>
+           <div class="cart-total">
+               <span>Total</span>
+               <span id="cart-total">$0.00</span>
+           </div>
+           <button class="cart-checkout-btn" id="cart-checkout-btn">Checkout</button>
+       </div>
+   </div>
+
+   <!--==================== MAIN ====================-->
+   <main class="main">
+      <!--==================== HOME ====================-->
+      <section class="home section" id="home">
+         <div class="home__container container">
+            <div class="home__text">
+               <div class="home__title">
+                  <h1>Crispy And <br> Delicious Pizzas</h1>
+               </div>
+   
+               <div class="home__description">
+                  <p>
+                     Order the best pizzas to end your hunger 
+                     and make your family moments more 
+                     memorable, place your order now.
+                  </p>
+               </div>
+   
+               <div class="button">
+                  <button id="order-now-btn">
+                     Order Pizza Now
+                  </button>
+                  <img src="assets/img/sticker-cheese.svg" alt="Cheese sticker">
+               </div>
+            </div>
+            
+            <div class="home__image">
+               <div class="home__image">
+                  <img src="assets/img/sticker-leaf.svg" alt="" class="home__leaf">
+                  <!-- Main pizza image -->
+                  <img src="assets/img/home-pizza.png" alt="Pizza" class="home__pizza">
+                
+                  <!-- Decorative elements -->
+                  <img src="assets/img/home-board.png" alt="Board" class="home__board">
+                  <img src="assets/img/home-leaf-1.png" alt="Leaf 1" class="home__leaf-1">
+                  <img src="assets/img/home-leaf-2.png" alt="Leaf 2" class="home__leaf-2">
+                  <img src="assets/img/home-mushroom.png" alt="Mushroom" class="home__mushroom">
+                  <img src="assets/img/home-olive.png" alt="Olive" class="home__olive">
+                  <img src="assets/img/home-pepperoni.png" alt="Pepperoni" class="home__pepperoni">
+                  <img src="assets/img/home-tomato.png" alt="Tomato" class="home__tomato">
+                </div>
+            </div>
+         </div>
+      </section>
+
+      <!--==================== ABOUT ====================-->
+      <section class="about section" id="about">
+         <div class="about__container container">
+            <div class="about__text">
+               <div class="about__title section__title">
+                  <h1>
+                     Learn More About <br> Our History
+                  </h1>
+               </div>
+   
+               <div class="about__description">
+                  <p>
+                     The secret to success is the best ingredients 
+                     to make a better pizza. Today we strive for 
+                     perfection, just as we have been doing for 15 years 
+                     when we first opened the pizzeria in Lima - Peru.
+                  </p>
+                  <div class="button">
+                     <button id="view-menu-btn">
+                        View Our Menu
+                     </button>
+                     <img src="assets/img/sticker-cheese.svg" alt="Cheese sticker">
+                  </div>
+               </div>
+            </div>
+
+            <div class="about__image">
+               <img src="assets/img/about-img.png" alt="About image">
+            </div>
+         </div>
+      </section>
+
+      <!--==================== MENU SECTION ====================-->
+      <section class="menu-section" id="menu">
+          <div class="menu-container">
+              <h2 class="menu-title">Our Pizza Menu</h2>
+              
+              <div class="menu-filters">
+                  <button class="filter-btn active" data-filter="all">All Pizzas</button>
+                  <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+                  <button class="filter-btn" data-filter="non-vegetarian">Non-Vegetarian</button>
+                  <button class="filter-btn" data-filter="specialty">Specialty</button>
+              </div>
+              
+              <div class="pizza-grid" id="pizza-grid">
+                  <!-- Pizza cards will be inserted here by JavaScript -->
+              </div>
+          </div>
+      </section>
+
+      <!--==================== POPULAR ====================-->
+      <section class="popular section" id="popular">  
+         <div class="popular__container container grid">
+            <div class="popular__data">
+                <h2 class="section__title">
+                    Discover <br> Popular Orders
+                </h2>
+                <p class="popular__description">
+                    Select the best prepared and delicious flavors. 
+                    We have collected some popular recipes from around 
+                    the world for you to choose your favorite.
+                </p>
+            </div>
+    
+            <div class="popular__swiper swiper">
+                <img src="assets/img/popular-dish.png" alt="Special dish presentation" class="popular__dish" data-rotate="0">
+                <div class="swiper-wrapper">
+                  <article class="popular__card swiper-slide">
+                     <img src="assets/img/popular-1.png" alt="Margherita Pizza on wooden board" class="popular__card-image">
+                     <h3 class="popular__card-title">Margherita Pizza</h3>
+                  </article>
+                  <article class="popular__card swiper-slide">
+                     <img src="assets/img/popular-2.png" alt="Mushroom Pizza close-up" class="popular__card-image">
+                     <h3 class="popular__card-title">Mushroom Pizza</h3>
+                  </article>
+                  <article class="popular__card swiper-slide">
+                     <img src="assets/img/popular-3.png" alt="Pepperoni Pizza with melted cheese" class="popular__card-image">
+                     <h3 class="popular__card-title">Pepperoni Pizza</h3>
+                  </article>
+                </div>
+                <!-- Add navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+      </section>
+
+      <!--==================== RECIPE ====================-->
+      <section class="recipe section">
+         <div class="recipe__container container">
+            <div class="recipe__title">
+               <h1 class="section__title">
+                  Fresh And Natural Ingredients
+               </h1>
+            </div>
+
+            <div class="recipe__item__container">
+               <div class="recipe__item">
+                  <div class="recipe__items">
+                     <img src= "assets/img/recipe-flour.png" alt="Flour">
+                     <div class="recipe__info">
+                        <h1 class="recipe__name">Flour</h1>
+                        <p class="recipe__description">The best wheat from the field for the best flour.</p>
+                     </div>
+                  </div>
+      
+                  <div class="recipe__items">
+                     <img src="assets/img/recipe-cheese.png" alt="Cheese">
+                     <div class="recipe__info">
+                        <h1 class="recipe__name">Cheese</h1>
+                        <p class="recipe__description">Indulge in cheese for a healthy future.</p>
+                     </div>
+                  </div>
+      
+                  <div class="recipe__items">
+                     <img src="assets/img/recipe-sauces.png" alt="Sauces">
+                     <div class="recipe__info">
+                        <h1 class="recipe__name">Sauces</h1>
+                        <p class="recipe__description">Add a touch of salsa to your life and it will taste better.</p>
+                     </div>
+                  </div>
+      
+                  <div class="recipe__items">
+                     <img src="assets/img/recipe-tomato.png" alt="Tomato">
+                     <div class="recipe__info">
+                        <h1 class="recipe__name">Vegetables</h1>
+                        <p class="recipe__description">Vegetables full of the essence of nature and organic.</p>
+                     </div>
+                  </div>
+      
+                  <div class="recipe__items">
+                     <img src="assets/img/recipe-meat.png" alt="Meat">
+                     <div class="recipe__info">
+                        <h1 class="recipe__name">Meats</h1>
+                        <p class="recipe__description">The best fresh meats for your health.</p>
+                     </div>
+                  </div>
+               </div>
+
+               <img src="assets/img/recipe-img.png" alt="Recipe image">
+            </div>
+         </div>
+      </section>
+
+      <!--==================== PRODUCTS (RENAMED TO POPULAR PIZZAS) ====================-->
+      <section class="products section" id="product">
+         <div class="product__container container">
+            <div class="product__title">
+               <h1 class="section__title">The Most <br> Devoured Pizzas</h1>
+            </div>
+            <div class="product__items">
+               <div class="product__item">
+                  <img src="assets/img/product-1.png" alt="Vegetarian Pizza">
+                  <h2 class="product__name">Vegetarian <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$15</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="veg1"></i>
+                  </div>
+               </div>
+
+               <div class="product__item">
+                  <img src="assets/img/product-2.png" alt="Pepperoni Pizza">
+                  <h2 class="product__name">Pepperoni <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$10</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="pep1"></i>
+                  </div>
+               </div>
+
+               <div class="product__item">
+                  <img src="assets/img/product-3.png" alt="Margherita Pizza">
+                  <h2 class="product__name">Margherita <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$12</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="mar1"></i>
+                  </div>
+               </div>
+
+               <div class="product__item">
+                  <img src="assets/img/product-4.png" alt="Italian Pizza">
+                  <h2 class="product__name">Italian <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$10</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="ita1"></i>
+                  </div>
+               </div>
+
+               <div class="product__item">
+                  <img src="assets/img/product-5.pngS" alt="Mushroom Pizza">
+                  <h2 class="product__name">Mushroom <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$17</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="mus1"></i>
+                  </div>
+               </div>
+
+               <div class="product__item">
+                  <img src="assets/img/product-6.png" alt="French Pizza">
+                  <h2 class="product__name">French <br> Pizza</h2>
+                  <div class="product__price__info">
+                     <h2 class="product__price">$15</h2>
+                     <i class="ri-shopping-bag-3-fill add-to-cart-btn" data-id="fre1"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!--==================== ORDER FORM ====================-->
+      <section class="order-form-section" id="order">
+          <div class="order-form-container">
+              <h2 class="order-form-title">Complete Your Order</h2>
+              
+              <div class="order-form-content">
+                  <div class="delivery-form">
+                      <h3 class="form-section-title">Delivery Details</h3>
+                      
+                      <form id="delivery-form">
+                          <div class="form-row form-row-2-col">
+                              <div class="form-group">
+                                  <label for="first-name" class="form-label">First Name</label>
+                                  <input type="text" id="first-name" class="form-input" required>
+                                  <span id="first-name-error" class="error-message">Please enter your first name</span>
+                              </div>
+                              
+                              <div class="form-group">
+                                  <label for="last-name" class="form-label">Last Name</label>
+                                  <input type="text" id="last-name" class="form-input" required>
+                                  <span id="last-name-error" class="error-message">Please enter your last name</span>
+                              </div>
+                          </div>
+                          
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="email" class="form-label">Email</label>
+                                  <input type="email" id="email" class="form-input" required>
+                                  <span id="email-error" class="error-message">Please enter a valid email address</span>
+                              </div>
+                          </div>
+                          
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="phone" class="form-label">Phone Number</label>
+                                  <input type="tel" id="phone" class="form-input" required>
+                                  <span id="phone-error" class="error-message">Please enter a valid phone number</span>
+                              </div>
+                          </div>
+                          
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="address" class="form-label">Delivery Address</label>
+                                  <input type="text" id="address" class="form-input" required>
+                                  <span id="address-error" class="error-message">Please enter your delivery address</span>
+                              </div>
+                          </div>
+                          
+                          <div class="form-row form-row-2-col">
+                              <div class="form-group">
+                                  <label for="city" class="form-label">City</label>
+                                  <input type="text" id="city" class="form-input" required>
+                                  <span id="city-error" class="error-message">Please enter your city</span>
+                              </div>
+                              
+                              <div class="form-group">
+                                  <label for="zip" class="form-label">ZIP Code</label>
+                                  <input type="text" id="zip" class="form-input" required>
+                                  <span id="zip-error" class="error-message">Please enter a valid ZIP code</span>
+                              </div>
+                          </div>
+                          
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="delivery-notes" class="form-label">Delivery Notes (Optional)</label>
+                                  <input type="text" id="delivery-notes" class="form-input" placeholder="E.g., Ring bell, call on arrival, etc.">
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  
+                  <div class="order-summary">
+                      <h3 class="form-section-title">Order Summary</h3>
+                      
+                      <div id="summary-items" class="summary-items">
+                          <!-- Order items will be inserted here by JavaScript -->
+                          <div id="empty-summary" class="empty-cart-message">
+                              <i class="ri-shopping-cart-line empty-cart-icon"></i>
+                              <p>Your cart is empty</p>
+                              <p>Add some delicious pizzas to proceed</p>
+                          </div>
+                      </div>
+                      
+                      <div class="coupon-section">
+                          <div class="coupon-form">
+                              <input type="text" id="coupon-input" class="coupon-input" placeholder="Enter coupon code">
+                              <button id="apply-coupon" class="coupon-btn">Apply</button>
+                          </div>
+                          <div id="coupon-message" class="coupon-message"></div>
+                      </div>
+                      
+                      <div class="summary-totals">
+                          <div class="summary-row">
+                              <span>Subtotal</span>
+                              <span id="summary-subtotal">$0.00</span>
+                          </div>
+                          
+                          <div class="summary-row">
+                              <span>Delivery Fee</span>
+                              <span>$2.99</span>
+                          </div>
+                          
+                          <div class="summary-row" id="discount-row" style="display: none;">
+                              <span>Discount</span>
+                              <span id="discount-amount">-$0.00</span>
+                          </div>
+                          
+                          <div class="summary-row total">
+                              <span>Total</span>
+                              <span id="summary-total">$0.00</span>
+                          </div>
+                      </div>
+                      
+                      <button id="place-order-btn" class="place-order-btn" disabled>Place Order</button>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!--==================== CONTACT ====================-->
+      <section class="contact section" id="contact">
+         <div class="contact__container container">
+
+            <div class="contact__methods">
+               <div class="contact__title">
+                  <h2 class="section__title">Contact Now</h2>
+               </div>
+
+               <div class="contact__method">
+                  <div class="social-media__contact">
+                     <h2 class="contact_social-media">Write Us</h2>
+                     <i class="ri-whatsapp-fill"></i>
+                     <i class="ri-messenger-fill"></i>
+                     <i class="ri-telegram-2-fill"></i>
+                  </div>
+      
+                  <div class="contact__phone">
+                     <h2 class="delivery">Delivery</h2>
+                     <p class="delivery__contact__phone">
+                        +00-987-7654-321 <br>
+                        +11-012345
+                     </p>
+                  </div>
+               </div>
+               
+   
+               <div class="contact__place">
+                  <h2 class="location">Location</h2>
+                  <p class="location__name">
+                     Lima - Sun City - Peru <br>
+                     Av. Moon #4321
+                  </p>
+                  <p class="location__map">
+
+                     <a href="https://maps.app.goo.gl/MAmMDxUBFXBSUzLH7" class="map" target="_blank">
+                        <i class="ri-map-pin-fill"></i>
+                        View On Map
+                     </a>
+                  </p>
+   
+                  <img src="assets/img/sticker-tomato.svg" class="sticker__tomato" alt="Tomato sticker">
+                  <img src="assets/img/sticker-mushroom.svg" class="sticker__mushroom" alt="Mushroom sticker">
+               </div>
+            </div>
+
+            <div class="delivery__image">
+               <img src="assets/img/contact-img.png" alt="" class="contact__image">
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <a href="#" class="footer__logo">Pizza</a>
+
+         <div class="footer__content grid">
+            <div>
+               <div class="footer__social">
+
+                  <h3 class="footer__title">Social</h3>
+                  <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                      <i class="ri-facebook-circle-fill"></i>
+                  </a>
+
+                  <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-instagram-fill"></i>
+                  </a>
+
+                  <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-twitter-x-fill"></i>
+                  </a>
+               </div>
+
+               <div>
+                  <h3 class="footer__title">Payment Methods</h3>
+                  <div class="footer__pay">
+                     <img src="https://i.imgur.com/CU67sQX.png" alt="" class="footer__pay-img">
+                     <img src="https://i.imgur.com/mMn8D0Y.png" alt="" class="footer__pay-img">
+                     <img src="https://i.imgur.com/B7Lhwgd.png" alt="" class="footer__pay-img">
+                     <img src="https://i.imgur.com/ZQ5VvuA.png" alt="" class="footer__pay-img">
+                  </div>
+               </div>
+
+               <div>
+                  <h3 class="footer__title">Subscribe For Discounts</h3>
+
+                  <form action="" class="footer__form">
+                     <input type="email" placeholder="Email" class="footer__input">
+                     <button type="submit" class="footer__button button">
+                        Subscribe
+                     </button>
+                  </form>
+               </div>
+            </div>
+         </div>
+
+         <div class="footer__policy">
+            <a href="#" class="footer__link">Terms & Agreements</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+         </div>
+
+         <span class="footer__copy">
+            &#169; All Rights Reserved
+         </span>
+      </div>
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollUp" id="scrollBtn">
+      <i class="ri-arrow-up-line"></i>
+   </a>
+
+   <!--=============== CUSTOMIZATION MODAL ===============-->
+   <div class="modal-overlay" id="customization-modal">
+       <div class="modal-container">
+           <div class="modal-header">
+               <h3 class="modal-title">Customize Your Pizza</h3>
+               <button class="modal-close" id="close-modal">
+                   <i class="ri-close-line"></i>
+               </button>
+           </div>
+           
+           <div class="modal-body">
+               <div class="pizza-modal-info">
+                   <img src="" alt="" class="pizza-modal-image" id="pizza-modal-image">
+                   <div class="pizza-modal-details">
+                       <h3 id="pizza-modal-name"></h3>
+                       <p id="pizza-modal-description" class="pizza-modal-description"></p>
+                   </div>
+               </div>
+               
+               <div class="customize-form">
+                   <div class="form-group">
+                       <label>Size</label>
+                       <div class="sizes-container">
+                           <div class="size-option" data-size="small" data-price-modifier="0">
+                               Small
+                               <span class="size-price" id="small-price"></span>
+                           </div>
+                           <div class="size-option selected" data-size="medium" data-price-modifier="3">
+                               Medium
+                               <span class="size-price" id="medium-price"></span>
+                           </div>
+                           <div class="size-option" data-size="large" data-price-modifier="6">
+                               Large
+                               <span class="size-price" id="large-price"></span>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label>Crust</label>
+                       <div class="crust-container">
+                           <div class="crust-option selected" data-crust="classic" data-price-modifier="0">
+                               Classic
+                               <span class="crust-price">+$0.00</span>
+                           </div>
+                           <div class="crust-option" data-crust="thin" data-price-modifier="0">
+                               Thin
+                               <span class="crust-price">+$0.00</span>
+                           </div>
+                           <div class="crust-option" data-crust="stuffed" data-price-modifier="3">
+                               Stuffed
+                               <span class="crust-price">+$3.00</span>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label>Extra Toppings</label>
+                       <div class="toppings-container" id="toppings-container">
+                           <!-- Toppings will be dynamically inserted here -->
+                       </div>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label>Quantity</label>
+                       <div class="quantity-container">
+                           <div class="quantity-controls">
+                               <button class="quantity-btn" id="decrease-quantity">-</button>
+                               <input type="number" value="1" min="1" class="quantity-input" id="quantity-input">
+                               <button class="quantity-btn" id="increase-quantity">+</button>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <div class="total-price">
+                       <span>Total:</span>
+                       <span id="modal-total-price">$0.00</span>
+                   </div>
+               </div>
+           </div>
+           
+           <div class="modal-footer">
+               <button class="add-to-cart-btn" id="modal-add-to-cart">Add to Cart</button>
+           </div>
+       </div>
+   </div>
+
+   <!--=============== ORDER CONFIRMATION MODAL ===============-->
+   <div class="confirmation-modal" id="confirmation-modal">
+       <div class="confirmation-container">
+           <i class="ri-check-line confirmation-icon"></i>
+           <h2 class="confirmation-title">Order Placed Successfully!</h2>
+           <p class="confirmation-message">Thank you for your order. Your delicious pizza will be on its way soon!</p>
+           
+           <div class="order-details">
+               <div class="order-number">
+                   <span>Order #:</span>
+                   <span id="confirmation-order-number"></span>
+               </div>
+               <div class="estimated-time">
+                   <span>Estimated Delivery:</span>
+                   <span id="confirmation-estimated-time"></span>
+               </div>
+           </div>
+           
+           <button class="close-confirmation-btn" id="close-confirmation">Continue Shopping</button>
+       </div>
+   </div>
+
+   <!--=============== SWIPER JS ===============-->
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+   <script src="assets/js/main.js"></script>
+   <!--=============== MAIN JS ===============-->
+
+</body>
+</html>
