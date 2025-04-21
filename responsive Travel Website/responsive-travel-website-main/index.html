@@ -1,0 +1,4186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDU0ODVlIiBkPSJNNDk5LjY0LDQwOC44NWMuMTQsMS44OC0uMjcsMy43Ny0xLjIyLDUuNDFhMTUuMTksMTUuMTksMCwwLDEtMTIuODQsN0gzNDUuNThMMjExLjkyLDQyMSwyNjguOCwzMDkuNzQsMTYxLDMyNXptLTgzLjQtMTYxLjc1TDQxNS40OSwxMzAuOTRsMjQuNywxMDYuMjFMNDg0LjM1LDI0Ny4xWk0yODUuNTQsMzAzLjMzLDI0NiwyMTcuOTQsMzA2LjU1LDIxN3pNMjU2LDEyMC42NGwzOC40Myw5MC40TDIxNi40NCwyMDcuNTFaTTE4NiwzMjQuNjEsODUuMzIsMzExLDEyNS43NiwyMjFaTTgwLjgxLDI2Mi44OCw0MC4zNywzMzYuOSwxMi4zNiwyNDcuMSw2OCwyMzcuMTVaTTc1LjUzLDE5Ni40MmwzNS4xMy04Mi43NXMxMTEuNjYsMCwxMTMuNzEsMGwzNS4xNCw4Mi43NVoiLz48L3N2Zz4=" type="image/svg+xml">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    
+    <!--=============== FLATPICKR CALENDAR ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!--=============== NOUISLIDER ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css">
+
+    <!--=============== LEAFLET MAP ===============-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!--=============== TAILWIND CSS ===============-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'hsl(190, 64%, 22%)',
+                            dark: 'hsl(190, 64%, 15%)'
+                        },
+                        title: 'hsl(190, 64%, 18%)',
+                        text: 'hsl(190, 24%, 35%)',
+                        lightText: 'hsl(190, 8%, 60%)',
+                        input: 'hsl(190, 24%, 97%)',
+                        body: 'hsl(190, 100%, 99%)',
+                    },
+                    fontFamily: {
+                        body: ['"Open Sans"', 'sans-serif'],
+                        title: ['Raleway', 'sans-serif'],
+                    },
+                    fontSize: {
+                        biggest: '2.5rem',
+                        h1: '1.5rem',
+                        h2: '1.25rem',
+                        h3: '1rem',
+                        normal: '0.938rem',
+                        small: '0.813rem',
+                        smaller: '0.75rem',
+                    },
+                    fontWeight: {
+                        medium: '500',
+                        semibold: '600',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <title>Enhanced Travel Website</title>
+    
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
+        
+        :root {
+            --header-height: 3rem;
+            --hue-color: 190;
+            --first-color: hsl(var(--hue-color), 64%, 22%);
+            --first-color-second: hsl(var(--hue-color), 64%, 22%);
+            --first-color-alt: hsl(var(--hue-color), 64%, 15%);
+            --title-color: hsl(var(--hue-color), 64%, 18%);
+            --text-color: hsl(var(--hue-color), 24%, 35%);
+            --text-color-light: hsl(var(--hue-color), 8%, 60%);
+            --input-color: hsl(var(--hue-color), 24%, 97%);
+            --body-color: hsl(var(--hue-color), 100%, 99%);
+            --white-color: #FFF;
+            --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+            --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
+
+            --body-font: 'Open Sans', sans-serif;
+            --title-font: 'Raleway', sans-serif;
+            --biggest-font-size: 2.5rem;
+            --h1-font-size: 1.5rem;
+            --h2-font-size: 1.25rem;
+            --h3-font-size: 1rem;
+            --normal-font-size: .938rem;
+            --small-font-size: .813rem;
+            --smaller-font-size: .75rem;
+
+            --font-medium: 500;
+            --font-semi-bold: 600;
+
+            --mb-0-25: .25rem;
+            --mb-0-5: .5rem;
+            --mb-0-75: .75rem;
+            --mb-1: 1rem;
+            --mb-1-25: 1.25rem;
+            --mb-1-5: 1.5rem;
+            --mb-2: 2rem;
+            --mb-2-5: 2.5rem;
+
+            --z-tooltip: 10;
+            --z-fixed: 100;
+            --z-modal: 1000;
+
+            --img-transition: .3s;
+            --img-hidden: hidden;
+            --img-scale: scale(1.1);
+        }
+
+        @media screen and (min-width: 968px) {
+            :root {
+                --biggest-font-size: 4rem;
+                --h1-font-size: 2.25rem;
+                --h2-font-size: 1.75rem;
+                --h3-font-size: 1.25rem;
+                --normal-font-size: 1rem;
+                --small-font-size: .875rem;
+                --smaller-font-size: .813rem;
+            }
+        }
+
+        /* Dark theme variables */
+        .dark-theme {
+            --first-color-second: hsl(var(--hue-color), 54%, 12%);
+            --title-color: hsl(var(--hue-color), 24%, 95%);
+            --text-color: hsl(var(--hue-color), 8%, 75%);
+            --input-color: hsl(var(--hue-color), 29%, 16%);
+            --body-color: hsl(var(--hue-color), 29%, 12%);
+            --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
+            --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: var(--header-height) 0 0 0;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+            font-family: var(--title-font);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button, input {
+            border: none;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        input {
+            outline: none;
+        }
+
+        .main {
+            overflow-x: hidden;
+        }
+
+        /* REUSABLE CSS CLASSES */
+        .section {
+            padding: 4.5rem 0 2.5rem;
+        }
+
+        .section__title {
+            font-size: var(--h2-font-size);
+            color: var(--title-color);
+            text-align: center;
+            text-transform: capitalize;
+            margin-bottom: var(--mb-2);
+        }
+
+        .container {
+            max-width: 968px;
+            margin-left: var(--mb-1);
+            margin-right: var(--mb-1);
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: var(--z-fixed);
+            background-color: transparent;
+            transition: background-color 0.4s;
+        }
+
+        /* NAV */
+        .nav {
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo, .nav__toggle {
+            color: var(--white-color);
+        }
+
+        .nav__logo {
+            font-weight: var(--font-semi-bold);
+        }
+
+        .nav__toggle {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .nav__menu {
+            position: relative;
+        }
+
+        @media screen and (max-width: 767px) {
+            .nav__menu {
+                position: fixed;
+                background-color: var(--body-color);
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100%;
+                box-shadow: -1px 0 4px rgba(14, 55, 63, 0.15);
+                padding: 3rem;
+                transition: .4s;
+                z-index: var(--z-fixed);
+            }
+        }
+
+        .nav__list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2.5rem;
+        }
+
+        .nav__link {
+            color: var(--text-color-light);
+            font-weight: var(--font-semi-bold);
+            text-transform: uppercase;
+        }
+
+        .nav__link:hover {
+            color: var(--text-color);
+        }
+
+        .nav__close {
+            position: absolute;
+            top: .75rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--title-color);
+            cursor: pointer;
+        }
+
+        .nav__dark {
+            display: flex;
+            align-items: center;
+            column-gap: 2rem;
+            position: absolute;
+            left: 3rem;
+            bottom: 4rem;
+        }
+
+        .change-theme, .change-theme-name {
+            color: var(--text-color);
+        }
+
+        .change-theme {
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .change-theme-name {
+            font-size: var(--small-font-size);
+        }
+
+        /* BUTTONS */
+        .button {
+            display: inline-block;
+            background-color: var(--first-color);
+            color: var(--white-color);
+            padding: 1rem 2rem;
+            font-weight: var(--font-semi-bold);
+            transition: .3s;
+        }
+
+        .button:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        .button--flex {
+            display: flex;
+            align-items: center;
+            column-gap: .25rem;
+        }
+
+        .button--link {
+            background: none;
+            padding: 0;
+        }
+
+        .button--link:hover {
+            background: none;
+        }
+
+        /* Show menu */
+        .show-menu {
+            right: 0;
+        }
+
+        /* Change header background */
+        .scroll-header {
+            background-color: var(--body-color);
+            box-shadow: 0 0 4px rgba(14, 55, 63, 0.15);
+        }
+
+        .scroll-header .nav__logo,
+        .scroll-header .nav__toggle {
+            color: var(--title-color);
+        }
+
+        /* Active link */
+        .active-link {
+            position: relative;
+            color: var(--title-color);
+        }
+
+        .active-link::before {
+            content: '';
+            position: absolute;
+            background-color: var(--title-color);
+            width: 100%;
+            height: 2px;
+            bottom: -.75rem;
+            left: 0;
+        }
+
+        /* HOME */
+        .home__img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            object-position: 83%;
+        }
+
+        .home__container {
+            position: relative;
+            height: calc(100vh - var(--header-height));
+            align-content: center;
+            row-gap: 3rem;
+        }
+
+        .home__data-subtitle,
+        .home__data-title,
+        .home__social-link,
+        .home__info {
+            color: var(--white-color);
+        }
+
+        .home__data-subtitle {
+            display: block;
+            font-weight: var(--font-semi-bold);
+            margin-bottom: var(--mb-0-75);
+        }
+
+        .home__data-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: var(--mb-2-5);
+        }
+
+        .home__social {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.5rem;
+        }
+
+        .home__social-link {
+            font-size: 1.2rem;
+            width: max-content;
+        }
+
+        .home__info {
+            background-color: var(--first-color);
+            display: flex;
+            padding: 1.5rem 1rem;
+            align-items: center;
+            column-gap: .5rem;
+            position: absolute;
+            right: 0;
+            bottom: 1rem;
+            width: 228px;
+        }
+
+        .home__info-title {
+            display: block;
+            font-size: var(--small-font-size);
+            font-weight: var(--font-semi-bold);
+            margin-bottom: var(--mb-0-75);
+        }
+
+        .home__info-button {
+            font-size: var(--smaller-font-size);
+        }
+
+        .home__info-overlay {
+            overflow: var(--img-hidden);
+        }
+
+        .home__info-img {
+            width: 145px;
+            transition: var(--img-transition);
+        }
+
+        .home__info-img:hover {
+            transform: var(--img-scale);
+        }
+
+        /* ABOUT */
+        .about__data {
+            text-align: center;
+        }
+
+        .about__container {
+            row-gap: 2.5rem;
+        }
+
+        .about__description {
+            margin-bottom: var(--mb-2);
+        }
+
+        .about__img {
+            display: flex;
+            column-gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about__img-overlay {
+            overflow: var(--img-hidden);
+        }
+
+        .about__img-one {
+            width: 130px;
+        }
+
+        .about__img-two {
+            width: 180px;
+        }
+
+        .about__img-one,
+        .about__img-two {
+            transition: var(--img-transition);
+        }
+
+        .about__img-one:hover,
+        .about__img-two:hover {
+            transform: var(--img-scale);
+        }
+
+        /* DISCOVER */
+        .discover__card {
+            position: relative;
+            width: 200px;
+            overflow: var(--img-hidden);
+        }
+
+        .discover__data {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1rem;
+        }
+
+        .discover__title,
+        .discover__description {
+            color: var(--white-color);
+        }
+
+        .discover__title {
+            font-size: var(--h3-font-size);
+            margin-bottom: var(--mb-0-25);
+        }
+
+        .discover__description {
+            display: block;
+            font-size: var(--smaller-font-size);
+        }
+
+        .discover__img {
+            transition: var(--img-transition);
+        }
+
+        .discover__img:hover {
+            transform: var(--img-scale);
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-left,
+        .swiper-container-3d .swiper-slide-shadow-right {
+            background-image: none;
+        }
+
+        /* EXPERIENCE */
+        .experience__container {
+            row-gap: 2.5rem;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        .experience__content {
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 1rem;
+            justify-items: center;
+            padding: 0 2rem;
+        }
+
+        .experience__number {
+            font-size: var(--h2-font-size);
+            font-weight: var(--font-semi-bold);
+            margin-bottom: var(--mb-0-5);
+        }
+
+        .experience__description {
+            font-size: var(--small-font-size);
+        }
+
+        .experience__img {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .experience__overlay {
+            overflow: var(--img-hidden);
+        }
+
+        .experience__overlay:nth-child(1) {
+            width: 263px;
+            margin-right: 2rem;
+        }
+
+        .experience__overlay:nth-child(2) {
+            width: 120px;
+            position: absolute;
+            top: 2rem;
+            right: 0;
+        }
+
+        .experience__img-one,
+        .experience__img-two {
+            transition: var(--img-transition);
+        }
+
+        .experience__img-one:hover,
+        .experience__img-two:hover {
+            transform: var(--img-scale);
+        }
+
+        /* PLACES */
+        .place__card, .place__img {
+            height: 230px;
+        }
+
+        .place__container {
+            grid-template-columns: repeat(2, max-content);
+            justify-content: center;
+        }
+
+        .place__card {
+            position: relative;
+            overflow: var(--img-hidden);
+        }
+
+        .place__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: .75rem .75rem 1rem;
+        }
+
+        .place__rating {
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+        }
+
+        .place__rating-icon {
+            font-size: .75rem;
+            margin-right: var(--mb-0-25);
+        }
+
+        .place__rating-number {
+            font-size: var(--small-font-size);
+        }
+
+        .place__subtitle, .place__price {
+            display: block;
+        }
+
+        .place__title {
+            font-size: var(--h3-font-size);
+            color: var(--white-color);
+            margin-bottom: var(--mb-0-25);
+        }
+
+        .place__subtitle {
+            font-size: var(--smaller-font-size);
+            margin-bottom: var(--mb-1-25);
+        }
+
+        .place__button {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: .75rem 1rem;
+        }
+
+        .place__card:hover .place__img {
+            transform: var(--img-scale);
+        }
+
+        .place__img {
+            transition: var(--img-transition);
+        }
+
+        .place__content, .place__title {
+            color: var(--white-color);
+        }
+
+        /* SUBSCRIBE */
+        .subscribe__bg {
+            background-color: var(--first-color-second);
+            padding: 2.5rem 0;
+        }
+
+        .subscribe__title,
+        .subscribe__description {
+            color: var(--white-color);
+        }
+
+        .subscribe__description {
+            text-align: center;
+            margin-bottom: var(--mb-2-5);
+        }
+
+        .subscribe__form {
+            background-color: var(--input-color);
+            padding: .5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subscribe__input {
+            width: 70%;
+            padding-right: .5rem;
+            background-color: var(--input-color);
+            color: var(--text-color);
+        }
+
+        .subscribe__input::placeholder {
+            color: var(--text-color);
+        }
+
+        /* VIDEO */
+        .video__container {
+            padding-bottom: 1rem;
+        }
+
+        .video__description {
+            text-align: center;
+            margin-bottom: var(--mb-2-5);
+        }
+
+        .video__content {
+            position: relative;
+        }
+
+        .video__button {
+            position: absolute;
+            right: 1rem;
+            bottom: -1rem;
+            padding: 1rem 1.5rem;
+        }
+
+        .video__button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* SPONSORS */
+        .sponsor__container {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            justify-items: center;
+            row-gap: 3.5rem;
+        }
+
+        .sponsor__content:hover .sponsor__img {
+            filter: invert(0.5);
+        }
+
+        .sponsor__img {
+            width: 90px;
+            filter: invert(0.7);
+            transition: var(--img-transition);
+        }
+
+        /* FOOTER */
+        .footer__container {
+            row-gap: 5rem;
+        }
+
+        .footer__content {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            row-gap: 2rem;
+        }
+
+        .footer__title,
+        .footer__subtitle {
+            font-size: var(--h3-font-size);
+        }
+
+        .footer__title {
+            margin-bottom: var(--mb-0-5);
+        }
+
+        .footer__description {
+            margin-bottom: var(--mb-2);
+        }
+
+        .footer__social {
+            font-size: 1.25rem;
+            color: var(--title-color);
+            margin-right: var(--mb-1-25);
+        }
+
+        .footer__subtitle {
+            margin-bottom: var(--mb-1);
+        }
+
+        .footer__item {
+            margin-bottom: var(--mb-0-75);
+        }
+
+        .footer__link {
+            color: var(--text-color);
+        }
+
+        .footer__link:hover {
+            color: var(--title-color);
+        }
+
+        .footer__rights {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.5rem;
+            text-align: center;
+        }
+
+        .footer__copy, .footer__terms-link {
+            font-size: var(--small-font-size);
+            color: var(--text-color-light);
+        }
+
+        .footer__terms {
+            display: flex;
+            column-gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .footer__terms-link:hover {
+            color: var(--text-color);
+        }
+
+        /* SCROLL UP */
+        .scrollup {
+            position: fixed;
+            right: 1rem;
+            bottom: -20%;
+            background-color: var(--first-color);
+            padding: .5rem;
+            display: flex;
+            opacity: .9;
+            z-index: var(--z-tooltip);
+            transition: .4s;
+        }
+
+        .scrollup:hover {
+            background-color: var(--first-color-alt);
+            opacity: 1;
+        }
+
+        .scrollup__icon {
+            color: var(--white-color);
+            font-size: 1.2rem;
+        }
+
+        .show-scroll {
+            bottom: 5rem;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: .60rem;
+            background-color: var(--scroll-bar-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--scroll-thumb-color);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-color-light);
+        }
+
+        /* NEW STYLES FOR ENHANCED FEATURES */
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__content {
+            position: relative;
+            background-color: var(--body-color);
+            padding: 1.5rem;
+            border-radius: .5rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--first-color);
+            cursor: pointer;
+        }
+
+        .modal__title {
+            font-size: var(--h2-font-size);
+            font-weight: var(--font-semi-bold);
+            margin-bottom: 1rem;
+        }
+
+        /* Form styles */
+        .booking-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .booking-form__group {
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+        }
+
+        .booking-form__label {
+            font-size: var(--small-font-size);
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+        }
+
+        .booking-form__input {
+            background-color: var(--input-color);
+            padding: 1rem;
+            border-radius: .25rem;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .booking-form__error {
+            color: #e74c3c;
+            font-size: var(--smaller-font-size);
+            display: none;
+        }
+
+        .booking-form__group.error .booking-form__input {
+            border: 1px solid #e74c3c;
+        }
+
+        .booking-form__group.error .booking-form__error {
+            display: block;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--first-color);
+            overflow-x: auto;
+        }
+
+        .tabs__button {
+            padding: .75rem 1rem;
+            border: none;
+            background: none;
+            color: var(--text-color);
+            font-weight: var(--font-semi-bold);
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .tabs__button.active {
+            color: var(--first-color);
+        }
+
+        .tabs__button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--first-color);
+        }
+
+        /* Accordion */
+        .accordion {
+            border: 1px solid var(--text-color-light);
+            border-radius: .5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .accordion__header {
+            padding: 1rem;
+            background-color: var(--input-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color .3s;
+        }
+
+        .accordion__header:hover {
+            background-color: var(--scroll-bar-color);
+        }
+
+        .accordion__title {
+            font-size: var(--normal-font-size);
+            font-weight: var(--font-semi-bold);
+        }
+
+        .accordion__icon {
+            font-size: 1.25rem;
+            transition: transform .3s;
+        }
+
+        .accordion.active .accordion__icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion__content {
+            padding: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all .3s;
+        }
+
+        .accordion.active .accordion__content {
+            padding: 1rem;
+            height: auto;
+        }
+
+        /* Rating stars */
+        .stars {
+            display: flex;
+            gap: .25rem;
+        }
+
+        .stars__item {
+            font-size: 1.25rem;
+            color: #f1c40f;
+            cursor: pointer;
+        }
+
+        /* Filter styles */
+        .filter {
+            background-color: var(--input-color);
+            padding: 1rem;
+            border-radius: .5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter__form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .range-slider {
+            height: 5px;
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .range-slider .range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: .5rem;
+            color: var(--text-color);
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery__item {
+            position: relative;
+            overflow: hidden;
+            border-radius: .5rem;
+            cursor: pointer;
+        }
+
+        .gallery__img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform .3s;
+        }
+
+        .gallery__item:hover .gallery__img {
+            transform: scale(1.1);
+        }
+
+        .gallery__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .gallery__item:hover .gallery__overlay {
+            opacity: 1;
+        }
+
+        .gallery__title {
+            color: var(--white-color);
+            font-size: var(--normal-font-size);
+        }
+
+        /* Map container */
+        .map {
+            height: 400px;
+            border-radius: .5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Review styles */
+        .review {
+            background-color: var(--input-color);
+            padding: 1rem;
+            border-radius: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .review__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .5rem;
+        }
+
+        .review__user {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .review__avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--first-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        .review__info {
+            line-height: 1.4;
+        }
+
+        .review__name {
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+        }
+
+        .review__date {
+            font-size: var(--smaller-font-size);
+            color: var(--text-color-light);
+        }
+
+        .review__stars {
+            display: flex;
+            gap: .25rem;
+        }
+
+        .review__star {
+            color: #f1c40f;
+            font-size: var(--smaller-font-size);
+        }
+
+        .review__text {
+            font-size: var(--normal-font-size);
+            line-height: 1.5;
+        }
+
+        /* Loader */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--first-color);
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: var(--z-modal);
+            visibility: hidden;
+            opacity: 0;
+            transition: .3s;
+        }
+
+        .dark-theme .loading-overlay {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .loading-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Payment form */
+        .payment-card {
+            background-color: var(--body-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .payment-card__number {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .payment-card__digit {
+            flex: 1;
+            padding: 1rem;
+            background-color: var(--input-color);
+            border-radius: .25rem;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .payment-card__details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--first-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--first-color);
+        }
+
+        .timeline-item__title {
+            font-weight: var(--font-semi-bold);
+            margin-bottom: .5rem;
+            color: var(--title-color);
+        }
+
+        .timeline-item__text {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* NEW FEATURES */
+        /* Weather Widget */
+        .weather-widget {
+            background-color: var(--input-color);
+            border-radius: .5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .weather-widget__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .weather-widget__location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .weather-widget__icon {
+            font-size: 1.5rem;
+            color: var(--first-color);
+        }
+
+        .weather-widget__title {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+        }
+
+        .weather-widget__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .weather-widget__day {
+            background-color: var(--body-color);
+            padding: 1rem;
+            border-radius: .5rem;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .weather-widget__date {
+            font-size: var(--smaller-font-size);
+            color: var(--text-color-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-widget__temp {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-widget__desc {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+        }
+
+        /* Travel Tips */
+        .travel-tips {
+            margin-bottom: 2rem;
+        }
+
+        .travel-tips__item {
+            background-color: var(--input-color);
+            padding: 1rem;
+            border-radius: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .travel-tips__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--first-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .travel-tips__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .travel-tips__title {
+            font-size: var(--normal-font-size);
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+        }
+
+        .travel-tips__text {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        /* Currency Converter */
+        .currency-converter {
+            background-color: var(--input-color);
+            border-radius: .5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .currency-converter__header {
+            margin-bottom: 1rem;
+        }
+
+        .currency-converter__title {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .currency-converter__desc {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+        }
+
+        .currency-converter__form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .currency-converter__row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .currency-converter__input {
+            background-color: var(--body-color);
+            border: 1px solid var(--text-color-light);
+            border-radius: .25rem;
+            padding: 0.75rem;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .currency-converter__select {
+            background-color: var(--body-color);
+            border: 1px solid var(--text-color-light);
+            border-radius: .25rem;
+            padding: 0.75rem;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .currency-converter__icon {
+            display: flex;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--first-color);
+        }
+
+        /* Packing List */
+        .packing-list {
+            background-color: var(--input-color);
+            border-radius: .5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .packing-list__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .packing-list__title {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            color: var(--title-color);
+        }
+
+        .packing-list__form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .packing-list__input {
+            flex: 1;
+            background-color: var(--body-color);
+            border: 1px solid var(--text-color-light);
+            border-radius: .25rem;
+            padding: 0.75rem;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .packing-list__button {
+            background-color: var(--first-color);
+            color: var(--white-color);
+            border-radius: .25rem;
+            padding: 0.75rem 1rem;
+            font-weight: var(--font-semi-bold);
+        }
+
+        .packing-list__items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .packing-list__item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--text-color-light);
+        }
+
+        .packing-list__item:last-child {
+            border-bottom: none;
+        }
+
+        .packing-list__checkbox {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .packing-list__text {
+            flex: 1;
+            font-size: var(--normal-font-size);
+            color: var(--text-color);
+        }
+
+        .packing-list__item.checked .packing-list__text {
+            text-decoration: line-through;
+            color: var(--text-color-light);
+        }
+
+        .packing-list__delete {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 340px) {
+            .place__container {
+                grid-template-columns: max-content;
+                justify-content: center;
+            }
+            .experience__content {
+                padding: 0;
+            }
+            .experience__overlay:nth-child(1) {
+                width: 190px;
+            }
+            .experience__overlay:nth-child(2) {
+                width: 80px;
+            }
+            .home__info {
+                width: 190px;
+                padding: 1rem;
+            }
+            .experience__img,
+            .video__container {
+                padding: 0;
+            }
+        }
+
+        @media screen and (min-width: 568px) {
+            .video__container {
+                display: grid;
+                grid-template-columns: .6fr;
+                justify-content: center;
+            }
+            .place__container {
+                grid-template-columns: repeat(3, max-content);
+            }
+            .subscribe__form {
+                width: 470px;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            body {
+                margin: 0;
+            }
+            .nav {
+                height: calc(var(--header-height) + 1.5rem);
+            }
+            .nav__link {
+                color: var(--white-color);
+                text-transform: initial;
+            }
+            .nav__link:hover {
+                color: var(--white-color);
+            }
+            .nav__dark {
+                position: initial;
+            }
+            .nav__menu {
+                display: flex;
+                column-gap: 1rem;
+            }
+            .nav__list {
+                flex-direction: row;
+                column-gap: 4rem;
+            }
+            .nav__toggle, .nav__close {
+                display: none;
+            }
+            .change-theme-name {
+                display: none;
+            }
+            .change-theme {
+                color: var(--white-color);
+            }
+            .active-link::before {
+                background-color: var(--white-color);
+            }
+            .scroll-header .nav__link {
+                color: var(--text-color);
+            }
+            .scroll-header .active-link {
+                color: var(--title-color);
+            }
+            .scroll-header .active-link::before {
+                background-color: var(--title-color);
+            }
+            .scroll-header .change-theme {
+                color: var(--text-color);
+            }
+            .section {
+                padding: 7rem 0 2rem;
+            }
+            .home__container {
+                height: 100vh;
+                grid-template-rows: 1.8fr .5fr;
+            }
+            .home__data {
+                align-self: flex-end;
+            }
+            .home__social {
+                flex-direction: row;
+                align-self: flex-end;
+                margin-bottom: 3rem;
+                column-gap: 2.5rem;
+            }
+            .home__info {
+                bottom: 3rem;
+            }
+            .about__container {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+            .about__data, .about__title {
+                text-align: initial;
+            }
+            .about__title {
+                margin-bottom: var(--mb-1-5);
+            }
+            .about__description {
+                margin-bottom: var(--mb-2);
+            }
+            .discover__container {
+                width: 610px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .discover__container,
+            .place__container {
+                padding-top: 2rem;
+            }
+            .experience__overlay:nth-child(1) {
+                width: 363px;
+                margin-right: 4rem;
+            }
+            .experience__overlay:nth-child(2) {
+                width: 160px;
+            }
+            .subscribe__bg {
+                background: none;
+                padding: 0;
+            }
+            .subscribe__container {
+                background-color: var(--first-color-second);
+                padding: 3.5rem 0;
+            }
+            .subscribe__input {
+                padding: 0 .5rem;
+            }
+            .footer__rights {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .container {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .home__container {
+                grid-template-rows: 2fr .5fr;
+            }
+            .home__info {
+                width: 328px;
+                grid-template-columns: 1fr 2fr;
+                column-gap: 2rem;
+            }
+            .home__info-title {
+                font-size: var(--normal-font-size);
+            }
+            .home__info-img {
+                width: 240px;
+            }
+            .about__img-one {
+                width: 230px;
+            }
+            .about__img-two {
+                width: 290px;
+            }
+            .discover__card {
+                width: 237px;
+            }
+            .discover__container {
+                width: 700px;
+            }
+            .discover__data {
+                left: 1.5rem;
+                bottom: 2rem;
+            }
+            .discover__title {
+                font-size: var(--h2-font-size);
+            }
+            .experience__content {
+                margin: var(--mb-1) 0;
+                column-gap: 3.5rem;
+            }
+            .experience__overlay:nth-child(1) {
+                width: 463px;
+                margin-right: 7rem;
+            }
+            .experience__overlay:nth-child(2) {
+                width: 220px;
+                top: 3rem;
+            }
+            .video__container {
+                grid-template-columns: .7fr;
+            }
+            .video__description {
+                padding: 0 8rem;
+            }
+            .place__container {
+                gap: 3rem 2rem;
+            }
+            .place__card, .place__img {
+                height: 263px;
+            }
+            .footer__content {
+                justify-items: center;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media screen and (min-height: 721px) {
+            body {
+                margin: 0;
+            }
+            .home__container, .home__img {
+                height: 640px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Travel</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#discover" class="nav__link">Discover</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#place" class="nav__link">Places</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#bookings" class="nav__link">Bookings</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#tips" class="nav__link">Travel Tips</a>
+                    </li>
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+            <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80" alt="Tropical beach with palm trees" class="home__img">
+
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <span class="home__data-subtitle">Discover your place</span>
+                    <h1 class="home__data-title">Explore The <br> Best <b>Beautiful <br> Beaches</b></h1>
+                    <a href="#" class="button" id="explore-button">Explore</a>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                        <i class="ri-facebook-box-fill"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+
+                <div class="home__info">
+                    <div>
+                        <span class="home__info-title">5 best places to visit</span>
+                        <a href="#discover" class="button button--flex button--link home__info-button">
+                            More <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__info-overlay">
+                        <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Pristine beach view" class="home__info-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2 class="section__title about__title">More Information <br> About The Best Beaches</h2>
+                    <p class="about__description">You can find the most beautiful and pleasant places at the best 
+                        prices with special discounts, you choose the place we will guide you all the way to wait, get your 
+                        place now.
+                    </p>
+                    <a href="#" class="button" id="reserve-button">Reserve a place</a>
+                </div>
+
+                <div class="about__img">
+                    <div class="about__img-overlay">
+                        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=400&q=80" alt="Beach sunset" class="about__img-one">
+                    </div>
+
+                    <div class="about__img-overlay">
+                        <img src="https://images.unsplash.com/photo-1468413253725-0d5181091126?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" alt="Ocean view" class="about__img-two">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!--==================== DISCOVER ====================-->
+        <section class="discover section" id="discover">
+            <h2 class="section__title">Discover the most <br> attractive places</h2>
+            
+            <div class="discover__container container swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!--==================== EXPERIENCE ====================-->
+        <section class="experience section">
+            <h2 class="section__title">With Our Experience <br> We Will Serve You</h2>
+
+            <div class="experience__container container grid">
+                <div class="experience__content grid">
+                    <div class="experience__data">
+                        <h2 class="experience__number">20</h2>
+                        <span class="experience__description">Year <br> Experience</span>
+                    </div>
+
+                    <div class="experience__data">
+                        <h2 class="experience__number">75</h2>
+                        <span class="experience__description">Complete <br> tours</span>
+                    </div>
+
+                    <div class="experience__data">
+                        <h2 class="experience__number">650+</h2>
+                        <span class="experience__description">Tourist <br> Destination</span>
+                    </div>
+                </div>
+
+                <div class="experience__img grid">
+                    <div class="experience__overlay">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=700&q=80" alt="Beautiful beach" class="experience__img-one">
+                    </div>
+                    
+                    <div class="experience__overlay">
+                        <img src="https://images.unsplash.com/photo-1540390769625-2fc3f8b1d50c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=500&q=80" alt="Beach activities" class="experience__img-two">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== WEATHER WIDGET ====================-->
+        <section class="weather-section section">
+            <h2 class="section__title">Current Weather at Top Destinations</h2>
+            
+            <div class="container">
+                <div class="weather-widget">
+                    <div class="weather-widget__header">
+                        <div class="weather-widget__location">
+                            <i class="ri-map-pin-line weather-widget__icon"></i>
+                            <h3 class="weather-widget__title">Bali, Indonesia</h3>
+                        </div>
+                        <div class="weather-widget__select">
+                            <select id="weather-location" class="booking-form__input">
+                                <option value="bali">Bali, Indonesia</option>
+                                <option value="hawaii">Hawaii, USA</option>
+                                <option value="bora">Bora Bora, French Polynesia</option>
+                                <option value="whitehaven">Whitehaven, Australia</option>
+                                <option value="hvar">Hvar, Croatia</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-widget__content" id="weather-content">
+                        <!-- Weather forecast - populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== INTERACTIVE MAP ====================-->
+        <section class="map-section section">
+            <h2 class="section__title">Explore Our Destinations</h2>
+            <div class="container">
+                <div id="destinations-map" class="map"></div>
+            </div>
+        </section>
+
+        <!--==================== TRAVEL TIPS ====================-->
+        <section class="travel-tips-section section" id="tips">
+            <h2 class="section__title">Essential Travel Tips</h2>
+            
+            <div class="container">
+                <div class="travel-tips">
+                    <div class="accordion travel-tips__item">
+                        <div class="accordion__header">
+                            <div class="travel-tips__header">
+                                <div class="travel-tips__icon">
+                                    <i class="ri-suitcase-line"></i>
+                                </div>
+                                <h3 class="travel-tips__title">Packing Essentials</h3>
+                            </div>
+                            <i class="ri-arrow-down-s-line accordion__icon"></i>
+                        </div>
+                        <div class="accordion__content">
+                            <div class="travel-tips__text">
+                                <p>Always pack these essential items for your beach vacation:</p>
+                                <ul class="mt-2 ml-4 list-disc">
+                                    <li>Sunscreen (minimum SPF 30)</li>
+                                    <li>Beach hat and sunglasses</li>
+                                    <li>Swimwear and cover-ups</li>
+                                    <li>Reusable water bottle</li>
+                                    <li>First-aid kit with basic medications</li>
+                                    <li>Universal adapter for electronics</li>
+                                    <li>Comfortable walking shoes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion travel-tips__item">
+                        <div class="accordion__header">
+                            <div class="travel-tips__header">
+                                <div class="travel-tips__icon">
+                                    <i class="ri-shield-check-line"></i>
+                                </div>
+                                <h3 class="travel-tips__title">Safety Tips</h3>
+                            </div>
+                            <i class="ri-arrow-down-s-line accordion__icon"></i>
+                        </div>
+                        <div class="accordion__content">
+                            <div class="travel-tips__text">
+                                <p>Stay safe during your tropical vacation with these tips:</p>
+                                <ul class="mt-2 ml-4 list-disc">
+                                    <li>Research local emergency numbers before arrival</li>
+                                    <li>Always swim in designated areas with lifeguards</li>
+                                    <li>Be aware of rip currents and ocean conditions</li>
+                                    <li>Keep valuables secure and use hotel safes</li>
+                                    <li>Stay hydrated and protect yourself from the sun</li>
+                                    <li>Consider travel insurance for medical emergencies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion travel-tips__item">
+                        <div class="accordion__header">
+                            <div class="travel-tips__header">
+                                <div class="travel-tips__icon">
+                                    <i class="ri-restaurant-line"></i>
+                                </div>
+                                <h3 class="travel-tips__title">Food & Drink Advice</h3>
+                            </div>
+                            <i class="ri-arrow-down-s-line accordion__icon"></i>
+                        </div>
+                        <div class="accordion__content">
+                            <div class="travel-tips__text">
+                                <p>Enjoy local cuisine safely with these recommendations:</p>
+                                <ul class="mt-2 ml-4 list-disc">
+                                    <li>Try local specialties at established restaurants</li>
+                                    <li>Drink bottled water in locations with questionable water quality</li>
+                                    <li>Be cautious with street food - look for busy stalls with high turnover</li>
+                                    <li>Wash hands before eating or carry hand sanitizer</li>
+                                    <li>Inform restaurants about any food allergies</li>
+                                    <li>Be mindful of alcohol consumption in hot climates</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion travel-tips__item">
+                        <div class="accordion__header">
+                            <div class="travel-tips__header">
+                                <div class="travel-tips__icon">
+                                    <i class="ri-earth-line"></i>
+                                </div>
+                                <h3 class="travel-tips__title">Responsible Tourism</h3>
+                            </div>
+                            <i class="ri-arrow-down-s-line accordion__icon"></i>
+                        </div>
+                        <div class="accordion__content">
+                            <div class="travel-tips__text">
+                                <p>Travel responsibly with these eco-friendly practices:</p>
+                                <ul class="mt-2 ml-4 list-disc">
+                                    <li>Use reef-safe sunscreen in marine environments</li>
+                                    <li>Minimize plastic waste by using reusable items</li>
+                                    <li>Respect wildlife and maintain safe distances</li>
+                                    <li>Support local businesses and artisans</li>
+                                    <li>Follow designated trails and respect protected areas</li>
+                                    <li>Learn a few words in the local language</li>
+                                    <li>Be mindful of water and energy consumption</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CURRENCY CONVERTER ====================-->
+        <section class="currency-section section">
+            <h2 class="section__title">Currency Converter</h2>
+            
+            <div class="container">
+                <div class="currency-converter">
+                    <div class="currency-converter__header">
+                        <h3 class="currency-converter__title">Travel Budget Calculator</h3>
+                        <p class="currency-converter__desc">Quickly convert currencies for your travel budget planning.</p>
+                    </div>
+                    
+                    <div class="currency-converter__form">
+                        <div class="currency-converter__row">
+                            <input type="number" class="currency-converter__input" id="amount-from" value="1" min="0">
+                            
+                            <select class="currency-converter__select" id="currency-from">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="JPY">JPY</option>
+                                <option value="AUD">AUD</option>
+                                <option value="CAD">CAD</option>
+                                <option value="CNY">CNY</option>
+                                <option value="IDR">IDR</option>
+                                <option value="THB">THB</option>
+                            </select>
+                        </div>
+                        
+                        <div class="currency-converter__icon">
+                            <i class="ri-arrow-up-down-line" id="swap-currency"></i>
+                        </div>
+                        
+                        <div class="currency-converter__row">
+                            <input type="number" class="currency-converter__input" id="amount-to" readonly>
+                            
+                            <select class="currency-converter__select" id="currency-to">
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                                <option value="GBP">GBP</option>
+                                <option value="JPY">JPY</option>
+                                <option value="AUD">AUD</option>
+                                <option value="CAD">CAD</option>
+                                <option value="CNY">CNY</option>
+                                <option value="IDR">IDR</option>
+                                <option value="THB">THB</option>
+                            </select>
+                        </div>
+                        
+                        <button class="button" id="convert-currency">Convert</button>
+                    </div>
+                    
+                    <div class="mt-4 text-center text-sm" id="last-updated">
+                        Exchange rates last updated: May 15, 2023
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PACKING LIST GENERATOR ====================-->
+        <section class="packing-section section">
+            <h2 class="section__title">Travel Packing List</h2>
+            
+            <div class="container">
+                <div class="packing-list">
+                    <div class="packing-list__header">
+                        <h3 class="packing-list__title">Create Your Custom Packing List</h3>
+                        <button class="button" id="add-common-items">Add Common Items</button>
+                    </div>
+                    
+                    <form class="packing-list__form" id="packing-form">
+                        <input type="text" class="packing-list__input" id="packing-item" placeholder="Add an item...">
+                        <button type="submit" class="packing-list__button">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </form>
+                    
+                    <ul class="packing-list__items" id="packing-items">
+                        <!-- Will be populated by JS -->
+                    </ul>
+                    
+                    <div class="flex justify-between mt-4">
+                        <div>
+                            <span id="items-count">0</span> items
+                        </div>
+                        <button class="text-red-500" id="clear-items">Clear All</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== FILTER AND PACKAGES ====================-->
+        <section class="packages section" id="bookings">
+            <h2 class="section__title">Find Your Perfect Package</h2>
+            
+            <div class="container">
+                <!-- Dynamic package filtering -->
+                <div class="filter">
+                    <form class="filter__form" id="package-filter">
+                        <div class="booking-form__group">
+                            <label class="booking-form__label">Price Range:</label>
+                            <div class="range-slider" id="price-range"></div>
+                            <div class="range-values">
+                                <span id="price-min">$500</span>
+                                <span id="price-max">$5000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-form__group">
+                            <label class="booking-form__label">Duration:</label>
+                            <select class="booking-form__input" id="duration-filter">
+                                <option value="all">All Durations</option>
+                                <option value="short">Short Trip (1-3 days)</option>
+                                <option value="medium">Medium Trip (4-7 days)</option>
+                                <option value="long">Long Trip (8+ days)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="booking-form__group">
+                            <label class="booking-form__label">Activity Type:</label>
+                            <select class="booking-form__input" id="activity-filter">
+                                <option value="all">All Activities</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="relaxation">Relaxation</option>
+                                <option value="cultural">Cultural</option>
+                                <option value="family">Family-Friendly</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="button">Apply Filters</button>
+                    </form>
+                </div>
+                
+                <!-- Package cards -->
+                <div class="place__container grid" id="packages-container">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!--==================== VIDEO ====================-->
+        <section class="video section">
+            <h2 class="section__title">Video Tour</h2>
+
+            <div class="video__container container">
+                <p class="video__description">Find out more with our video of the most beautiful and 
+                    pleasant places for you and your family.
+                </p>
+
+                <div class="video__content">
+                    <video id="video-file">
+                        <source src="data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAA2NtZGF0AAACrQYF//+13EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1NSByMjkwMSA3ZDBlZmU2IC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTMgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTEgc2NlbmVjdXQ9NDAgaW50cmFfcmVmcmVzaD0wIHJjX2xvb2thaGVhZD00MCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIzLjAgcWNvbXA9MC42MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IGlwX3JhdGlvPTEuNDAgYXE9MToxLjAwAIAAAAA/ZYiEAD//8m+P5OXfBeLGOfKT/8UcZkZ21sQJ0j9sAAADAAADAAADAAADVinAWqnCuO0W6G0AAAbNL43iQGfxk9nLwAAAAwFDSjSTVnV9bmN7YlZGR1ZkX2xhSGJwZHJpY3ZyanprbnJxZ3xtZG1xcUpuYXVrbnl8bHBwYGBpYmFiZ2RoYWJkY2ZjYWVrZmplZmhpZGNsbGxnZGhnamhramZrY2hpZGJpaGFiZWVkZmFgYWNgYGRlYWVkYGNgXl9fXmBdY2NeXWJcXmJjYl1eYV1eX11cXV5iX19cXF5eXF5fY19dXl9fXl1dXmJbW11gWltfYlhZXWBZW11gW15bWFlaW1tcWlpaWVlZWllZWVlZWVlZWVlYWFhYWFhYWVlZWllaWlpaW1tbXFxcXV5eX19gYGNjY2RlZWZoaGlqbGxtbm9wcXJzdHV2ent8fX5/gIGCgoOEhYWGh4iIiYqMjI2Oj5CRkpOUlpeYmJmanJydnp+hoqOkpaanqKmqq6ytrq+wsbKztLW2tre4uru8vb6/wMDBwsPExcXGx8jIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+Pn6+/z9/v8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxzpAkAAAoFmlyUQABYkJ3ZmprZIb+LDRzS2VlxRFAqgBAACHVk+s4nz8z9+DMYKzwBEREdBf/7tstMRRE/X7u/2m7l3nNaOLPUVMlZxf///iuuhVBSxBt5wKgAAAAwBQlNJNWdX1uY3tiVkZHVmRfbEhoYmRyaWN2cmp6a25ycWd8bGRtcXFqbmF1a255fGxwcGBgaWJhYmdkaGFiZGNmY2Fla2ZqZWZoaWRjbGxsZ2RoZ2poa2pta2NoaWRiaWhhYmVlZGZhYGFjYGBkZWFlZGBjYF5fX15gXWNjXl1iXF5iY2JdXmFdXl9dXF1eYl9fXFxeXlxeX2NfXV5fX15dXV5iW1tdYFpbX2JYWl1gWVtdYFteW1hZWltbXFpaWllZWVpZWVlZWVlZWVlZWFhYWFhYWFlZWVpZWlpaWltbW1xcXF1eXl9fYGBjY2NkZWVmaGhpamxsbW5vcHFyc3R1dnh6e3x9fn+AgYKCg4SFhYaHiIiJiouMjY2Oj5CRkpOUlZaXmJiZmpycnZ6foaKjpKWmp6ipqqusra6vsLGys7S1tre4uru8vb6/wMHCw8TFxcbHyMjJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j4+fr7/P3+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCQspAAAe4XJ0dHJhY2sAAGPkYfQA/v/UpQAIjXW2E/BwvDJVDYUTuMg9oG1dTwHH5QL4ER2sO41O8EgQtmjsNdIRqXo7TZ4SQhDjIjBTTUNOTVMKUExBWUVSIFgKb3BlcmF0aW5nIHN5c3RlbQpWRVJTSU9OCg==">
+                    </video>
+
+                    <button class="button button--flex video__button" id="video-button">
+                        <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PLACES ====================-->
+        <section class="place section" id="place">
+            <h2 class="section__title">Choose Your Place</h2>
+
+            <div class="place__container container grid">
+                <!--==================== PLACES CARD 1 ====================-->
+                <div class="place__card">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80" alt="Bali beach with traditional boats" class="place__img">
+                    
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4.8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Bali</h3>
+                            <span class="place__subtitle">Indonesia</span>
+                            <span class="place__price">$2499</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button" data-id="bali">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 2 ====================-->
+                <div class="place__card">
+                    <img src="https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80" alt="Bora Bora overwater bungalows" class="place__img">
+                    
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">5.0</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Bora Bora</h3>
+                            <span class="place__subtitle">Polinesia</span>
+                            <span class="place__price">$1599</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button" data-id="bora">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 3 ====================-->
+                <div class="place__card">
+                    <img src="https://images.unsplash.com/photo-1545251142-f32339076e6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80" alt="Hawaii sunset beach" class="place__img">
+                    
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4.9</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Hawaii</h3>
+                            <span class="place__subtitle">EE.UU</span>
+                            <span class="place__price">$3499</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button" data-id="hawaii">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 4 ====================-->
+                <div class="place__card">
+                    <img src="https://images.unsplash.com/photo-1566750687468-56d13b8ef24d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80" alt="Whitehaven Beach aerial view" class="place__img">
+                    
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4.8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Whitehaven</h3>
+                            <span class="place__subtitle">Australia</span>
+                            <span class="place__price">$2499</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button" data-id="whitehaven">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!--==================== PLACES CARD 5 ====================-->
+                <div class="place__card">
+                    <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80" alt="Hvar town and harbor" class="place__img">
+                    
+                    <div class="place__content">
+                        <span class="place__rating">
+                            <i class="ri-star-line place__rating-icon"></i>
+                            <span class="place__rating-number">4.8</span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Hvar</h3>
+                            <span class="place__subtitle">Croacia</span>
+                            <span class="place__price">$1999</span>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex place__button" data-id="hvar">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== REVIEWS ====================-->
+        <section class="reviews section">
+            <h2 class="section__title">What Our Travelers Say</h2>
+            
+            <div class="container">
+                <div class="tabs">
+                    <button class="tabs__button active" data-tab="all">All Reviews</button>
+                    <button class="tabs__button" data-tab="bali">Bali</button>
+                    <button class="tabs__button" data-tab="bora">Bora Bora</button>
+                    <button class="tabs__button" data-tab="hawaii">Hawaii</button>
+                    <button class="tabs__button" data-tab="whitehaven">Whitehaven</button>
+                    <button class="tabs__button" data-tab="hvar">Hvar</button>
+                </div>
+                
+                <div id="reviews-container">
+                    <!-- Will be populated by JS -->
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="button" id="write-review-button">Write a Review</button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SUBSCRIBE ====================-->
+        <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">Subscribe Our <br> Newsletter</h2>
+                    <p class="subscribe__description">Subscribe to our newsletter and get a 
+                        special 30% discount.
+                    </p>
+
+                    <form action="#" class="subscribe__form" id="newsletter-form">
+                        <input type="email" placeholder="Enter email" class="subscribe__input" id="newsletter-email" required>
+                        <button type="submit" class="button">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!--==================== SPONSORS ====================-->
+        <section class="sponsor section">
+            <div class="sponsor__container container grid">
+                <div class="sponsor__content">
+                    <img src="https://picsum.photos/id/0/100/35" alt="AirTravel logo" class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="https://picsum.photos/id/1/100/35" alt="BeachResorts logo" class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="https://picsum.photos/id/2/100/35" alt="IslandHopper logo" class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="https://picsum.photos/id/3/100/35" alt="OceanCruises logo" class="sponsor__img">
+                </div>
+                <div class="sponsor__content">
+                    <img src="https://picsum.photos/id/4/100/35" alt="TropicalTours logo" class="sponsor__img">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Travel</h3>
+                    <p class="footer__description">Travel you choose the <br> destination, 
+                        we offer you the <br> experience.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Features</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">News & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Company</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Team</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Plan & Pricing</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Become a member</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Support</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">FAQs</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Support Center</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&copy; 2023 Travel Website. All rights reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!--==================== MODALS ====================-->
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="booking-close"></i>
+            <h2 class="modal__title">Book Your Trip</h2>
+            
+            <form class="booking-form" id="booking-form">
+                <input type="hidden" id="destination-id" value="">
+                
+                <div class="booking-form__group">
+                    <label for="destination" class="booking-form__label">Destination</label>
+                    <input type="text" id="destination" class="booking-form__input" readonly>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label for="check-in" class="booking-form__label">Check-in Date</label>
+                    <input type="text" id="check-in" class="booking-form__input" placeholder="Select date" required>
+                    <span class="booking-form__error">Please select a check-in date</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label for="check-out" class="booking-form__label">Check-out Date</label>
+                    <input type="text" id="check-out" class="booking-form__input" placeholder="Select date" required>
+                    <span class="booking-form__error">Please select a check-out date</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label for="guests" class="booking-form__label">Number of Guests</label>
+                    <input type="number" id="guests" class="booking-form__input" min="1" max="10" value="2" required>
+                    <span class="booking-form__error">Please enter a valid number of guests (1-10)</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label for="room-type" class="booking-form__label">Room Type</label>
+                    <select id="room-type" class="booking-form__input" required>
+                        <option value="">Select Room Type</option>
+                        <option value="standard">Standard Room</option>
+                        <option value="deluxe">Deluxe Room</option>
+                        <option value="suite">Suite</option>
+                        <option value="villa">Private Villa</option>
+                    </select>
+                    <span class="booking-form__error">Please select a room type</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Estimated Price</label>
+                    <div id="estimated-price" class="booking-form__input">$0</div>
+                </div>
+                
+                <button type="submit" class="button">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Payment Modal -->
+    <div class="modal" id="payment-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="payment-close"></i>
+            <h2 class="modal__title">Payment Information</h2>
+            
+            <div class="booking-summary">
+                <div class="accordion active">
+                    <div class="accordion__header">
+                        <h3 class="accordion__title">Booking Summary</h3>
+                        <i class="ri-arrow-down-s-line accordion__icon"></i>
+                    </div>
+                    <div class="accordion__content" style="padding: 1rem; height: auto;">
+                        <div id="booking-summary"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="booking-form" id="payment-form">
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Name on Card</label>
+                    <input type="text" class="booking-form__input" placeholder="John Doe" required>
+                    <span class="booking-form__error">Please enter the name on your card</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Card Number</label>
+                    <div class="payment-card__number">
+                        <input type="text" class="payment-card__digit" maxlength="4" placeholder="1234" required>
+                        <input type="text" class="payment-card__digit" maxlength="4" placeholder="5678" required>
+                        <input type="text" class="payment-card__digit" maxlength="4" placeholder="9012" required>
+                        <input type="text" class="payment-card__digit" maxlength="4" placeholder="3456" required>
+                    </div>
+                    <span class="booking-form__error">Please enter a valid card number</span>
+                </div>
+                
+                <div class="payment-card__details">
+                    <div class="booking-form__group">
+                        <label class="booking-form__label">Expiry Date</label>
+                        <input type="text" class="booking-form__input" placeholder="MM/YY" required>
+                        <span class="booking-form__error">Please enter a valid expiry date</span>
+                    </div>
+                    
+                    <div class="booking-form__group">
+                        <label class="booking-form__label">CVV</label>
+                        <input type="text" class="booking-form__input" placeholder="123" maxlength="3" required>
+                        <span class="booking-form__error">Please enter your CVV</span>
+                    </div>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Billing Address</label>
+                    <input type="text" class="booking-form__input" placeholder="123 Main St" required>
+                    <span class="booking-form__error">Please enter your billing address</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms" class="ml-2">I agree to the terms and conditions</label>
+                    </div>
+                    <span class="booking-form__error">You must agree to the terms and conditions</span>
+                </div>
+                
+                <button type="submit" class="button">Complete Payment</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="confirmation-close"></i>
+            <div class="text-center">
+                <div class="flex justify-center mb-4">
+                    <i class="ri-check-line text-5xl text-green-500"></i>
+                </div>
+                <h2 class="modal__title">Booking Confirmed!</h2>
+                <p class="mb-4">Your booking has been confirmed. Check your email for details.</p>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Booking Reference</label>
+                    <div class="booking-form__input" id="booking-reference"></div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="accordion">
+                        <div class="accordion__header">
+                            <h3 class="accordion__title">Trip Itinerary</h3>
+                            <i class="ri-arrow-down-s-line accordion__icon"></i>
+                        </div>
+                        <div class="accordion__content">
+                            <div class="timeline" id="trip-itinerary">
+                                <!-- Will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="button mt-4" id="close-confirmation">Return to Homepage</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Review Modal -->
+    <div class="modal" id="review-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="review-close"></i>
+            <h2 class="modal__title">Write a Review</h2>
+            
+            <form class="booking-form" id="review-form">
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Destination</label>
+                    <select class="booking-form__input" id="review-destination" required>
+                        <option value="">Select Destination</option>
+                        <option value="bali">Bali</option>
+                        <option value="bora">Bora Bora</option>
+                        <option value="hawaii">Hawaii</option>
+                        <option value="whitehaven">Whitehaven</option>
+                        <option value="hvar">Hvar</option>
+                    </select>
+                    <span class="booking-form__error">Please select a destination</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Your Name</label>
+                    <input type="text" class="booking-form__input" id="review-name" required>
+                    <span class="booking-form__error">Please enter your name</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Rating</label>
+                    <div class="stars" id="review-stars">
+                        <i class="ri-star-line stars__item" data-value="1"></i>
+                        <i class="ri-star-line stars__item" data-value="2"></i>
+                        <i class="ri-star-line stars__item" data-value="3"></i>
+                        <i class="ri-star-line stars__item" data-value="4"></i>
+                        <i class="ri-star-line stars__item" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="review-rating" value="0" required>
+                    <span class="booking-form__error">Please select a rating</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Your Review</label>
+                    <textarea class="booking-form__input" id="review-text" rows="4" required></textarea>
+                    <span class="booking-form__error">Please write your review</span>
+                </div>
+                
+                <button type="submit" class="button">Submit Review</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Gallery Modal -->
+    <div class="modal" id="gallery-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="gallery-close"></i>
+            <h2 class="modal__title">Photo Gallery</h2>
+            
+            <div class="tabs">
+                <button class="tabs__button active" data-gallery="all">All</button>
+                <button class="tabs__button" data-gallery="beaches">Beaches</button>
+                <button class="tabs__button" data-gallery="resorts">Resorts</button>
+                <button class="tabs__button" data-gallery="activities">Activities</button>
+            </div>
+            
+            <div class="gallery" id="gallery-container">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <span class="loader"></span>
+    </div>
+    
+    <!-- Authentication Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal__content">
+            <i class="ri-close-line modal__close" id="auth-close"></i>
+            <h2 class="modal__title">Sign In / Register</h2>
+            
+            <div class="tabs">
+                <button class="tabs__button active" data-auth="login">Login</button>
+                <button class="tabs__button" data-auth="register">Register</button>
+            </div>
+            
+            <form class="booking-form" id="login-form">
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Email</label>
+                    <input type="email" class="booking-form__input" placeholder="youremail@example.com" required>
+                    <span class="booking-form__error">Please enter a valid email</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Password</label>
+                    <input type="password" class="booking-form__input" required>
+                    <span class="booking-form__error">Please enter your password</span>
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me" class="ml-1 text-sm">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm text-blue-500">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="button w-full">Login</button>
+            </form>
+            
+            <form class="booking-form hidden" id="register-form">
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Full Name</label>
+                    <input type="text" class="booking-form__input" required>
+                    <span class="booking-form__error">Please enter your full name</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Email</label>
+                    <input type="email" class="booking-form__input" required>
+                    <span class="booking-form__error">Please enter a valid email</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Password</label>
+                    <input type="password" id="register-password" class="booking-form__input" required>
+                    <span class="booking-form__error">Password must be at least 8 characters</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <label class="booking-form__label">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="booking-form__input" required>
+                    <span class="booking-form__error">Passwords do not match</span>
+                </div>
+                
+                <div class="booking-form__group">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms-register" required>
+                        <label for="terms-register" class="ml-2 text-sm">I agree to the <a href="#" class="text-blue-500">Terms of Service</a> and <a href="#" class="text-blue-500">Privacy Policy</a></label>
+                    </div>
+                    <span class="booking-form__error">You must agree to the terms</span>
+                </div>
+                
+                <button type="submit" class="button w-full">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    
+    <!--=============== SWIPER JS ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    
+    <!--=============== FLATPICKR ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!--=============== NOUISLIDER ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>
+    
+    <!--=============== LEAFLET MAP ===============-->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <!--=============== MARKED (MARKDOWN PARSER) ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script>
+        /*==================== SHOW MENU ====================*/
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        /*===== MENU SHOW =====*/
+        if(navToggle){
+            navToggle.addEventListener('click', () =>{
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        /*===== MENU HIDDEN =====*/
+        if(navClose){
+            navClose.addEventListener('click', () =>{
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        /*==================== REMOVE MENU MOBILE ====================*/
+        const navLink = document.querySelectorAll('.nav__link');
+
+        function linkAction(){
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.remove('show-menu');
+        }
+        navLink.forEach(n => n.addEventListener('click', linkAction));
+
+        /*==================== CHANGE BACKGROUND HEADER ====================*/
+        function scrollHeader(){
+            const header = document.getElementById('header');
+            if(this.scrollY >= 100) header.classList.add('scroll-header'); 
+            else header.classList.remove('scroll-header');
+        }
+        window.addEventListener('scroll', scrollHeader);
+
+        /*==================== DARK LIGHT THEME ====================*/
+        const themeButton = document.getElementById('theme-button');
+        const darkTheme = 'dark-theme';
+        const iconTheme = 'ri-sun-line';
+
+        // Previously selected topic (if user selected)
+        const selectedTheme = localStorage.getItem('selected-theme');
+        const selectedIcon = localStorage.getItem('selected-icon');
+
+        // Detect the user's preferred color scheme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // We obtain the current theme that the interface has by validating the dark-theme class
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+        const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line';
+
+        // We validate if the user previously chose a topic
+        if (selectedTheme) {
+            // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+            themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
+        }
+
+        // Activate / deactivate the theme manually with the button
+        themeButton.addEventListener('click', () => {
+            // Add or remove the dark / icon theme
+            document.body.classList.toggle(darkTheme);
+            themeButton.classList.toggle(iconTheme);
+            // We save the theme and the current icon that the user chose
+            localStorage.setItem('selected-theme', getCurrentTheme());
+            localStorage.setItem('selected-icon', getCurrentIcon());
+        });
+        
+        /*==================== SHOW SCROLL UP ====================*/ 
+        function scrollUp(){
+            const scrollUp = document.getElementById('scroll-up');
+            if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); 
+            else scrollUp.classList.remove('show-scroll');
+        }
+        window.addEventListener('scroll', scrollUp);
+
+        /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+        const sections = document.querySelectorAll('section[id]');
+
+        function scrollActive(){
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current =>{
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 50;
+                const sectionId = current.getAttribute('id');
+                
+                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                    document.querySelector('.nav__menu a[href*=' + sectionId + ']')?.classList.add('active-link');
+                }else{
+                    document.querySelector('.nav__menu a[href*=' + sectionId + ']')?.classList.remove('active-link');
+                }
+            });
+        }
+        window.addEventListener('scroll', scrollActive);
+
+        /*==================== VIDEO ====================*/
+        const videoFile = document.getElementById('video-file'),
+              videoButton = document.getElementById('video-button'),
+              videoIcon = document.getElementById('video-icon');
+
+        function playPause(){ 
+            if (videoFile.paused){
+                // Play video
+                videoFile.play();
+                // Change the icon
+                videoIcon.classList.add('ri-pause-line');
+                videoIcon.classList.remove('ri-play-line');
+            }
+            else {
+                // Pause video
+                videoFile.pause(); 
+                // We change the icon
+                videoIcon.classList.remove('ri-pause-line');
+                videoIcon.classList.add('ri-play-line');
+            }
+        }
+        videoButton.addEventListener('click', playPause);
+
+        function finalVideo(){
+            // Video ends, icon change
+            videoIcon.classList.remove('ri-pause-line');
+            videoIcon.classList.add('ri-play-line');
+        }
+        // ended, when the video ends
+        videoFile.addEventListener('ended', finalVideo);
+        
+        /*==================== SCROLL REVEAL ANIMATION ====================*/
+        const sr = ScrollReveal({
+            distance: '60px',
+            duration: 2800,
+            reset: false,
+        });
+
+        sr.reveal(`.home__data, .home__social-link, .home__info,
+                  .discover__container,
+                  .experience__data, .experience__overlay,
+                  .place__card,
+                  .sponsor__content,
+                  .footer__data, .footer__rights`,{
+            origin: 'top',
+            interval: 100,
+        });
+
+        sr.reveal(`.about__data, 
+                  .video__description,
+                  .subscribe__description`,{
+            origin: 'left',
+        });
+
+        sr.reveal(`.about__img-overlay, 
+                  .video__content,
+                  .subscribe__form`,{
+            origin: 'right',
+            interval: 100,
+        });
+        
+        /*==================== SWIPER DISCOVER ====================*/
+        // Data for discover section
+        const discoverData = [
+            {
+                id: 'bali',
+                title: 'Bali',
+                description: '24 tours available',
+                price: 2499,
+                img: `https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+            },
+            {
+                id: 'hawaii',
+                title: 'Hawaii',
+                description: '15 tours available',
+                price: 3499,
+                img: `https://images.unsplash.com/photo-1542259009477-d625272157b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+            },
+            {
+                id: 'hvar',
+                title: 'Hvar',
+                description: '18 tours available',
+                price: 1999,
+                img: `https://images.unsplash.com/photo-1596394723269-b2cbdd97ffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+            },
+            {
+                id: 'whitehaven',
+                title: 'Whitehaven',
+                description: '32 tours available',
+                price: 2499,
+                img: `https://images.unsplash.com/photo-1589211759524-6f89c00ac9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+            },
+            {
+                id: 'bora',
+                title: 'Bora Bora',
+                description: '29 tours available',
+                price: 1599,
+                img: `https://images.unsplash.com/photo-1573548842355-73bb50e50323?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+            }
+        ];
+        
+        // Generate discover cards
+        const discoverWrapper = document.querySelector('.discover__container .swiper-wrapper');
+        
+        discoverData.forEach(item => {
+            const cardHTML = `
+                <div class="discover__card swiper-slide">
+                    <img src="${item.img}" alt="${item.title}" class="discover__img">
+                    <div class="discover__data">
+                        <h2 class="discover__title">${item.title}</h2>
+                        <span class="discover__description">${item.description}</span>
+                    </div>
+                </div>
+            `;
+            discoverWrapper.innerHTML += cardHTML;
+        });
+        
+        // Initialize Swiper
+        let swiper = new Swiper(".discover__container", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            spaceBetween: 32,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+        
+        /*==================== PACKAGE DATA ====================*/
+        const packages = [
+            {
+                id: 'bali-adventure',
+                destination: 'bali',
+                title: 'Bali Adventure',
+                subtitle: 'Indonesia',
+                price: 2499,
+                duration: 7,
+                activity: 'adventure',
+                rating: 4.8,
+                img: `https://images.unsplash.com/photo-1583531352515-8884af319dc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'bali-relax',
+                destination: 'bali',
+                title: 'Bali Relaxation',
+                subtitle: 'Indonesia',
+                price: 1999,
+                duration: 5,
+                activity: 'relaxation',
+                rating: 4.9,
+                img: `https://images.unsplash.com/photo-1557367184-663fba4b8b91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'bora-paradise',
+                destination: 'bora',
+                title: 'Bora Bora Paradise',
+                subtitle: 'Polinesia',
+                price: 1599,
+                duration: 4,
+                activity: 'relaxation',
+                rating: 5.0,
+                img: `https://images.unsplash.com/photo-1544550581-1bcabf842b77?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'hawaii-surf',
+                destination: 'hawaii',
+                title: 'Hawaii Surf Camp',
+                subtitle: 'USA',
+                price: 3499,
+                duration: 10,
+                activity: 'adventure',
+                rating: 4.9,
+                img: `https://images.unsplash.com/photo-1535569333377-29c1b878720d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'whitehaven-family',
+                destination: 'whitehaven',
+                title: 'Whitehaven Family Trip',
+                subtitle: 'Australia',
+                price: 2499,
+                duration: 7,
+                activity: 'family',
+                rating: 4.8,
+                img: `https://images.unsplash.com/photo-1517554558809-9b4971b38f39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'hvar-cultural',
+                destination: 'hvar',
+                title: 'Hvar Cultural Experience',
+                subtitle: 'Croatia',
+                price: 1999,
+                duration: 5,
+                activity: 'cultural',
+                rating: 4.7,
+                img: `https://images.unsplash.com/photo-1565625483295-71cef982ad48?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'hawaii-luxury',
+                destination: 'hawaii',
+                title: 'Hawaii Luxury Retreat',
+                subtitle: 'USA',
+                price: 4999,
+                duration: 14,
+                activity: 'relaxation',
+                rating: 5.0,
+                img: `https://images.unsplash.com/photo-1498967852262-84a67cf60854?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            },
+            {
+                id: 'bora-honeymoon',
+                destination: 'bora',
+                title: 'Bora Bora Honeymoon',
+                subtitle: 'Polinesia',
+                price: 3999,
+                duration: 8,
+                activity: 'relaxation',
+                rating: 5.0,
+                img: `https://images.unsplash.com/photo-1583592643761-bf2efd95e208?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80`
+            }
+        ];
+        
+        /*==================== RENDER PACKAGES ====================*/
+        const packagesContainer = document.getElementById('packages-container');
+        
+        function renderPackages(packagesData = packages) {
+            packagesContainer.innerHTML = '';
+            
+            packagesData.forEach(pkg => {
+                const cardHTML = `
+                    <div class="place__card" data-id="${pkg.id}" data-price="${pkg.price}" data-duration="${pkg.duration}" data-activity="${pkg.activity}">
+                        <img src="${pkg.img}" alt="${pkg.title}" class="place__img">
+                        
+                        <div class="place__content">
+                            <span class="place__rating">
+                                <i class="ri-star-fill place__rating-icon"></i>
+                                <span class="place__rating-number">${pkg.rating}</span>
+                            </span>
+
+                            <div class="place__data">
+                                <h3 class="place__title">${pkg.title}</h3>
+                                <span class="place__subtitle">${pkg.subtitle}</span>
+                                <span class="place__price">$${pkg.price}</span>
+                            </div>
+                        </div>
+
+                        <button class="button button--flex place__button" data-id="${pkg.id}">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                `;
+                packagesContainer.innerHTML += cardHTML;
+            });
+            
+            // Add event listeners to book buttons
+            document.querySelectorAll('.place__button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const packageId = button.getAttribute('data-id');
+                    const selectedPackage = packages.find(pkg => pkg.id === packageId);
+                    openBookingModal(selectedPackage);
+                });
+            });
+        }
+        
+        // Initial render
+        renderPackages();
+        
+        /*==================== FILTER PACKAGES ====================*/
+        // Initialize noUiSlider
+        const priceRange = document.getElementById('price-range');
+        
+        noUiSlider.create(priceRange, {
+            start: [500, 5000],
+            connect: true,
+            step: 100,
+            range: {
+                'min': 500,
+                'max': 5000
+            }
+        });
+        
+        // Update price display
+        const priceMin = document.getElementById('price-min');
+        const priceMax = document.getElementById('price-max');
+        
+        priceRange.noUiSlider.on('update', function (values, handle) {
+            if (handle === 0) {
+                priceMin.textContent = `$${Math.round(values[0])}`;
+            } else {
+                priceMax.textContent = `$${Math.round(values[1])}`;
+            }
+        });
+        
+        // Filter packages
+        const packageFilter = document.getElementById('package-filter');
+        
+        packageFilter.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const priceValues = priceRange.noUiSlider.get();
+            const minPrice = Math.round(priceValues[0]);
+            const maxPrice = Math.round(priceValues[1]);
+            
+            const duration = document.getElementById('duration-filter').value;
+            const activity = document.getElementById('activity-filter').value;
+            
+            let filteredPackages = packages.filter(pkg => {
+                // Filter by price
+                if (pkg.price < minPrice || pkg.price > maxPrice) {
+                    return false;
+                }
+                
+                // Filter by duration
+                if (duration !== 'all') {
+                    if (duration === 'short' && pkg.duration > 3) return false;
+                    if (duration === 'medium' && (pkg.duration < 4 || pkg.duration > 7)) return false;
+                    if (duration === 'long' && pkg.duration < 8) return false;
+                }
+                
+                // Filter by activity
+                if (activity !== 'all' && pkg.activity !== activity) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            renderPackages(filteredPackages);
+        });
+        
+        /*==================== GALLERY MODAL ====================*/
+        // Gallery image data
+        const galleryImages = [
+            { id: 1, category: 'beaches', url: `https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Maldives Beach' },
+            { id: 2, category: 'beaches', url: `https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Sunset Beach' },
+            { id: 3, category: 'resorts', url: `https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Beach Resort' },
+            { id: 4, category: 'resorts', url: `https://images.unsplash.com/photo-1561501878-aabd62634533?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Luxury Resort' },
+            { id: 5, category: 'activities', url: `https://images.unsplash.com/photo-1513039464749-94912b3841ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Snorkeling' },
+            { id: 6, category: 'activities', url: `https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80`, title: 'Hiking' }
+        ];
+        
+        // Show gallery modal
+        document.getElementById('explore-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            openGalleryModal();
+        });
+        
+        function openGalleryModal() {
+            document.getElementById('gallery-modal').classList.add('active');
+            renderGallery('all');
+        }
+        
+        document.getElementById('gallery-close').addEventListener('click', () => {
+            document.getElementById('gallery-modal').classList.remove('active');
+        });
+        
+        // Gallery filter tabs
+        document.querySelectorAll('[data-gallery]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('[data-gallery]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-gallery');
+                renderGallery(category);
+            });
+        });
+        
+        function renderGallery(category) {
+            const galleryContainer = document.getElementById('gallery-container');
+            galleryContainer.innerHTML = '';
+            
+            const filteredImages = category === 'all' 
+                ? galleryImages 
+                : galleryImages.filter(img => img.category === category);
+            
+            filteredImages.forEach(img => {
+                const itemHTML = `
+                    <div class="gallery__item">
+                        <img src="${img.url}" alt="${img.title}" class="gallery__img">
+                        <div class="gallery__overlay">
+                            <h3 class="gallery__title">${img.title}</h3>
+                        </div>
+                    </div>
+                `;
+                galleryContainer.innerHTML += itemHTML;
+            });
+        }
+        
+        /*==================== BOOKING MODAL ====================*/
+        // Open booking modal
+        function openBookingModal(packageData) {
+            // Set destination data
+            document.getElementById('destination-id').value = packageData.id;
+            document.getElementById('destination').value = packageData.title;
+            
+            // Show modal
+            document.getElementById('booking-modal').classList.add('active');
+            
+            // Initialize date pickers
+            flatpickr("#check-in", {
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                onChange: calculatePrice
+            });
+            
+            flatpickr("#check-out", {
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                onChange: calculatePrice
+            });
+            
+            // Clear previous values
+            document.getElementById('check-in').value = '';
+            document.getElementById('check-out').value = '';
+            document.getElementById('guests').value = '2';
+            document.getElementById('room-type').value = '';
+            document.getElementById('estimated-price').textContent = `$${packageData.price}`;
+        }
+        
+        document.getElementById('reserve-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Default to Bali package
+            const defaultPackage = packages.find(pkg => pkg.id === 'bali-adventure');
+            openBookingModal(defaultPackage);
+        });
+        
+        document.getElementById('booking-close').addEventListener('click', () => {
+            document.getElementById('booking-modal').classList.remove('active');
+        });
+        
+        // Calculate price
+        function calculatePrice() {
+            const packageId = document.getElementById('destination-id').value;
+            const packageData = packages.find(pkg => pkg.id === packageId);
+            
+            const basePrice = packageData.price;
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const guests = parseInt(document.getElementById('guests').value) || 2;
+            const roomType = document.getElementById('room-type').value;
+            
+            let totalPrice = basePrice;
+            
+            // Calculate days
+            if (checkIn && checkOut) {
+                const checkInDate = new Date(checkIn);
+                const checkOutDate = new Date(checkOut);
+                const days = Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+                
+                if (days > 0) {
+                    // Add base price for each day beyond the first
+                    totalPrice = basePrice + (days - 1) * (basePrice * 0.6);
+                }
+            }
+            
+            // Add guest price
+            if (guests > 2) {
+                totalPrice += (guests - 2) * (basePrice * 0.3);
+            }
+            
+            // Add room type price
+            if (roomType === 'deluxe') totalPrice *= 1.2;
+            if (roomType === 'suite') totalPrice *= 1.5;
+            if (roomType === 'villa') totalPrice *= 1.8;
+            
+            document.getElementById('estimated-price').textContent = `$${Math.round(totalPrice)}`;
+        }
+        
+        // Room type selection
+        document.getElementById('room-type').addEventListener('change', calculatePrice);
+        
+        // Guests selection
+        document.getElementById('guests').addEventListener('input', calculatePrice);
+        
+        // Booking form submission
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            const formElements = e.target.elements;
+            
+            // Validate form
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                
+                if (element.required && !element.value) {
+                    element.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    element.parentElement.classList.remove('error');
+                }
+            }
+            
+            if (isValid) {
+                // Hide booking modal
+                document.getElementById('booking-modal').classList.remove('active');
+                
+                // Show payment modal
+                openPaymentModal();
+            }
+        });
+        
+        /*==================== PAYMENT MODAL ====================*/
+        function openPaymentModal() {
+            // Prepare booking summary
+            const packageId = document.getElementById('destination-id').value;
+            const packageData = packages.find(pkg => pkg.id === packageId);
+            
+            const destination = document.getElementById('destination').value;
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const guests = document.getElementById('guests').value;
+            const roomType = document.getElementById('room-type').value;
+            const price = document.getElementById('estimated-price').textContent;
+            
+            let roomTypeText = 'Standard Room';
+            if (roomType === 'deluxe') roomTypeText = 'Deluxe Room';
+            if (roomType === 'suite') roomTypeText = 'Suite';
+            if (roomType === 'villa') roomTypeText = 'Private Villa';
+            
+            const bookingSummary = `
+                <p><strong>Destination:</strong> ${destination}</p>
+                <p><strong>Check-in:</strong> ${checkIn}</p>
+                <p><strong>Check-out:</strong> ${checkOut}</p>
+                <p><strong>Guests:</strong> ${guests}</p>
+                <p><strong>Room Type:</strong> ${roomTypeText}</p>
+                <p><strong>Total Price:</strong> ${price}</p>
+            `;
+            
+            document.getElementById('booking-summary').innerHTML = bookingSummary;
+            
+            // Show payment modal
+            document.getElementById('payment-modal').classList.add('active');
+        }
+        
+        document.getElementById('payment-close').addEventListener('click', () => {
+            document.getElementById('payment-modal').classList.remove('active');
+        });
+        
+        // Payment form validation
+        document.querySelectorAll('.payment-card__digit').forEach((input, index, inputs) => {
+            input.addEventListener('input', (e) => {
+                // Allow only numbers
+                e.target.value = e.target.value.replace(/\D/g, '');
+                
+                // Auto-move to next input
+                if (e.target.value.length === 4 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+        });
+        
+        // Payment form submission
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            const formElements = e.target.elements;
+            
+            // Validate form
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                
+                if (element.required && !element.value) {
+                    if (element.parentElement.classList.contains('booking-form__group')) {
+                        element.parentElement.classList.add('error');
+                    }
+                    isValid = false;
+                } else if (element.parentElement.classList.contains('booking-form__group')) {
+                    element.parentElement.classList.remove('error');
+                }
+            }
+            
+            if (isValid) {
+                // Show loading overlay
+                document.getElementById('loading-overlay').classList.add('active');
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    // Hide loading overlay
+                    document.getElementById('loading-overlay').classList.remove('active');
+                    
+                    // Hide payment modal
+                    document.getElementById('payment-modal').classList.remove('active');
+                    
+                    // Show confirmation modal
+                    openConfirmationModal();
+                }, 2000);
+            }
+        });
+        
+        /*==================== CONFIRMATION MODAL ====================*/
+        function openConfirmationModal() {
+            // Generate random booking reference
+            const bookingRef = 'TR' + Math.floor(1000000 + Math.random() * 9000000);
+            document.getElementById('booking-reference').textContent = bookingRef;
+            
+            // Generate trip itinerary
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            
+            if (checkIn && checkOut) {
+                const checkInDate = new Date(checkIn);
+                const checkOutDate = new Date(checkOut);
+                const days = Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+                
+                let itineraryHTML = '';
+                
+                // Day 1 (arrival)
+                itineraryHTML += `
+                    <div class="timeline-item">
+                        <h3 class="timeline-item__title">Day 1: Arrival</h3>
+                        <p class="timeline-item__text">Airport pickup and transfer to your accommodation. Welcome dinner in the evening.</p>
+                    </div>
+                `;
+                
+                // Middle days
+                if (days > 2) {
+                    itineraryHTML += `
+                        <div class="timeline-item">
+                            <h3 class="timeline-item__title">Day 2-${days-1}: Activities</h3>
+                            <p class="timeline-item__text">Enjoy various activities including beach time, water sports, local tours, and culinary experiences.</p>
+                        </div>
+                    `;
+                }
+                
+                // Last day (departure)
+                itineraryHTML += `
+                    <div class="timeline-item">
+                        <h3 class="timeline-item__title">Day ${days}: Departure</h3>
+                        <p class="timeline-item__text">Breakfast at the hotel, checkout, and transfer to the airport.</p>
+                    </div>
+                `;
+                
+                document.getElementById('trip-itinerary').innerHTML = itineraryHTML;
+            }
+            
+            // Show confirmation modal
+            document.getElementById('confirmation-modal').classList.add('active');
+        }
+        
+        document.getElementById('confirmation-close').addEventListener('click', () => {
+            document.getElementById('confirmation-modal').classList.remove('active');
+        });
+        
+        document.getElementById('close-confirmation').addEventListener('click', () => {
+            document.getElementById('confirmation-modal').classList.remove('active');
+        });
+        
+        /*==================== REVIEW SYSTEM ====================*/
+        // Review data
+        let reviews = [
+            { id: 1, destination: 'bali', name: 'John D.', rating: 5, date: '2023-05-12', text: 'Absolutely amazing experience! The beaches were pristine and the locals were incredibly friendly.' },
+            { id: 2, destination: 'hawaii', name: 'Sarah M.', rating: 4, date: '2023-04-23', text: 'Great surf spots and beautiful scenery. Weather was perfect throughout our stay.' },
+            { id: 3, destination: 'bora', name: 'Michael T.', rating: 5, date: '2023-06-01', text: 'The most romantic getaway! Crystal clear waters and luxurious accommodations.' },
+            { id: 4, destination: 'whitehaven', name: 'Emily R.', rating: 5, date: '2023-05-18', text: 'The white sand beaches are out of this world. Great for families!' },
+            { id: 5, destination: 'hvar', name: 'David P.', rating: 4, date: '2023-04-15', text: 'Rich in culture and history. The local cuisine was fantastic.' },
+            { id: 6, destination: 'bali', name: 'Jessica K.', rating: 4, date: '2023-03-22', text: 'The temples and rice terraces were breathtaking. Would definitely recommend.' }
+        ];
+        
+        // Render reviews
+        function renderReviews(destination = 'all') {
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
+            
+            const filteredReviews = destination === 'all'
+                ? reviews
+                : reviews.filter(review => review.destination === destination);
+            
+            filteredReviews.forEach(review => {
+                const initials = review.name.split(' ').map(n => n[0]).join('');
+                
+                // Format date
+                const reviewDate = new Date(review.date);
+                const formattedDate = reviewDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                
+                // Create stars
+                let starsHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        starsHTML += '<i class="ri-star-fill review__star"></i>';
+                    } else {
+                        starsHTML += '<i class="ri-star-line review__star"></i>';
+                    }
+                }
+                
+                const reviewHTML = `
+                    <div class="review" data-id="${review.id}">
+                        <div class="review__header">
+                            <div class="review__user">
+                                <div class="review__avatar">${initials}</div>
+                                <div class="review__info">
+                                    <div class="review__name">${review.name}</div>
+                                    <div class="review__date">${formattedDate}</div>
+                                </div>
+                            </div>
+                            <div class="review__stars">
+                                ${starsHTML}
+                            </div>
+                        </div>
+                        <p class="review__text">${review.text}</p>
+                    </div>
+                `;
+                
+                reviewsContainer.innerHTML += reviewHTML;
+            });
+            
+            if (filteredReviews.length === 0) {
+                reviewsContainer.innerHTML = `
+                    <div class="text-center p-4">
+                        <p>No reviews for this destination yet. Be the first to write one!</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Initial rendering
+        renderReviews();
+        
+        // Review tabs
+        document.querySelectorAll('[data-tab]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const destination = tab.getAttribute('data-tab');
+                renderReviews(destination);
+            });
+        });
+        
+        // Open review modal
+        document.getElementById('write-review-button').addEventListener('click', () => {
+            document.getElementById('review-modal').classList.add('active');
+            
+            // Reset form
+            document.getElementById('review-destination').value = '';
+            document.getElementById('review-name').value = '';
+            document.getElementById('review-rating').value = '0';
+            document.getElementById('review-text').value = '';
+            
+            document.querySelectorAll('#review-stars .stars__item').forEach(star => {
+                star.classList.remove('ri-star-fill');
+                star.classList.add('ri-star-line');
+            });
+        });
+        
+        document.getElementById('review-close').addEventListener('click', () => {
+            document.getElementById('review-modal').classList.remove('active');
+        });
+        
+        // Star rating
+        document.querySelectorAll('#review-stars .stars__item').forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                document.getElementById('review-rating').value = value;
+                
+                document.querySelectorAll('#review-stars .stars__item').forEach(s => {
+                    const starValue = parseInt(s.getAttribute('data-value'));
+                    
+                    if (starValue <= value) {
+                        s.classList.remove('ri-star-line');
+                        s.classList.add('ri-star-fill');
+                    } else {
+                        s.classList.remove('ri-star-fill');
+                        s.classList.add('ri-star-line');
+                    }
+                });
+            });
+        });
+        
+        // Submit review
+        document.getElementById('review-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate form
+            const destination = document.getElementById('review-destination').value;
+            const name = document.getElementById('review-name').value;
+            const rating = parseInt(document.getElementById('review-rating').value);
+            const text = document.getElementById('review-text').value;
+            
+            if (!destination) {
+                document.getElementById('review-destination').parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('review-destination').parentElement.classList.remove('error');
+            }
+            
+            if (!name) {
+                document.getElementById('review-name').parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('review-name').parentElement.classList.remove('error');
+            }
+            
+            if (rating === 0) {
+                document.getElementById('review-rating').parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('review-rating').parentElement.classList.remove('error');
+            }
+            
+            if (!text) {
+                document.getElementById('review-text').parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('review-text').parentElement.classList.remove('error');
+            }
+            
+            if (isValid) {
+                // Add new review
+                const newReview = {
+                    id: reviews.length + 1,
+                    destination,
+                    name,
+                    rating,
+                    date: new Date().toISOString().split('T')[0],
+                    text
+                };
+                
+                reviews.unshift(newReview); // Add to beginning
+                
+                // Close modal
+                document.getElementById('review-modal').classList.remove('active');
+                
+                // Re-render reviews
+                const activeTab = document.querySelector('[data-tab].active');
+                const activeDestination = activeTab.getAttribute('data-tab');
+                renderReviews(activeDestination);
+            }
+        });
+        
+        /*==================== NEWSLETTER FORM ====================*/
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('newsletter-email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email || !emailRegex.test(email)) {
+                // Show error
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Show loading overlay
+            document.getElementById('loading-overlay').classList.add('active');
+            
+            // Simulate submission
+            setTimeout(() => {
+                // Hide loading overlay
+                document.getElementById('loading-overlay').classList.remove('active');
+                
+                // Clear input
+                document.getElementById('newsletter-email').value = '';
+                
+                // Show success message
+                alert('Thank you for subscribing to our newsletter!');
+            }, 1000);
+        });
+        
+        /*==================== MAP INTEGRATION ====================*/
+        // Initialize map
+        function initMap() {
+            const map = L.map('destinations-map').setView([0, 0], 2);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers for destinations
+            const destinations = [
+                { name: 'Bali', lat: -8.4095, lng: 115.1889 },
+                { name: 'Hawaii', lat: 19.8968, lng: -155.5828 },
+                { name: 'Bora Bora', lat: -16.5004, lng: -151.7415 },
+                { name: 'Whitehaven', lat: -20.2758, lng: 149.0371 },
+                { name: 'Hvar', lat: 43.1729, lng: 16.4425 }
+            ];
+            
+            destinations.forEach(destination => {
+                const marker = L.marker([destination.lat, destination.lng]).addTo(map);
+                marker.bindPopup(`<b>${destination.name}</b><br>Click to explore`).openPopup();
+                
+                marker.on('click', () => {
+                    // Find package and open booking
+                    const packageData = packages.find(pkg => pkg.destination.toLowerCase() === destination.name.toLowerCase());
+                    if (packageData) {
+                        openBookingModal(packageData);
+                    }
+                });
+            });
+        }
+        
+        // Initialize map after page load
+        window.addEventListener('load', initMap);
+        
+        /*==================== ACCORDION FUNCTIONALITY ====================*/
+        document.querySelectorAll('.accordion__header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('active');
+            });
+        });
+        
+        /*==================== AUTH TABS ====================*/
+        document.querySelectorAll('[data-auth]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('[data-auth]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const authType = tab.getAttribute('data-auth');
+                
+                if (authType === 'login') {
+                    document.getElementById('login-form').classList.remove('hidden');
+                    document.getElementById('register-form').classList.add('hidden');
+                } else {
+                    document.getElementById('login-form').classList.add('hidden');
+                    document.getElementById('register-form').classList.remove('hidden');
+                }
+            });
+        });
+
+        /*==================== WEATHER WIDGET ====================*/
+        // Weather data
+        const weatherData = {
+            'bali': [
+                { date: 'Today', temp: '29°C', desc: 'Sunny' },
+                { date: 'Tomorrow', temp: '28°C', desc: 'Partly Cloudy' },
+                { date: 'Wed', temp: '30°C', desc: 'Sunny' },
+                { date: 'Thu', temp: '27°C', desc: 'Rainy' },
+                { date: 'Fri', temp: '29°C', desc: 'Partly Cloudy' }
+            ],
+            'hawaii': [
+                { date: 'Today', temp: '26°C', desc: 'Sunny' },
+                { date: 'Tomorrow', temp: '27°C', desc: 'Sunny' },
+                { date: 'Wed', temp: '25°C', desc: 'Partly Cloudy' },
+                { date: 'Thu', temp: '26°C', desc: 'Sunny' },
+                { date: 'Fri', temp: '26°C', desc: 'Sunny' }
+            ],
+            'bora': [
+                { date: 'Today', temp: '27°C', desc: 'Sunny' },
+                { date: 'Tomorrow', temp: '28°C', desc: 'Sunny' },
+                { date: 'Wed', temp: '28°C', desc: 'Partly Cloudy' },
+                { date: 'Thu', temp: '27°C', desc: 'Sunny' },
+                { date: 'Fri', temp: '26°C', desc: 'Partly Cloudy' }
+            ],
+            'whitehaven': [
+                { date: 'Today', temp: '24°C', desc: 'Sunny' },
+                { date: 'Tomorrow', temp: '25°C', desc: 'Partly Cloudy' },
+                { date: 'Wed', temp: '23°C', desc: 'Rainy' },
+                { date: 'Thu', temp: '22°C', desc: 'Partly Cloudy' },
+                { date: 'Fri', temp: '25°C', desc: 'Sunny' }
+            ],
+            'hvar': [
+                { date: 'Today', temp: '23°C', desc: 'Sunny' },
+                { date: 'Tomorrow', temp: '24°C', desc: 'Sunny' },
+                { date: 'Wed', temp: '22°C', desc: 'Partly Cloudy' },
+                { date: 'Thu', temp: '21°C', desc: 'Rainy' },
+                { date: 'Fri', temp: '23°C', desc: 'Sunny' }
+            ]
+        };
+
+        // Render weather data
+        function renderWeather(destination = 'bali') {
+            const weatherContent = document.getElementById('weather-content');
+            weatherContent.innerHTML = '';
+
+            const data = weatherData[destination];
+            
+            data.forEach(day => {
+                let icon = 'ri-sun-line';
+                if (day.desc === 'Partly Cloudy') icon = 'ri-sun-cloudy-line';
+                if (day.desc === 'Rainy') icon = 'ri-showers-line';
+                
+                const dayHTML = `
+                    <div class="weather-widget__day">
+                        <div class="weather-widget__date">${day.date}</div>
+                        <i class="${icon} text-3xl text-blue-500"></i>
+                        <div class="weather-widget__temp">${day.temp}</div>
+                        <div class="weather-widget__desc">${day.desc}</div>
+                    </div>
+                `;
+                
+                weatherContent.innerHTML += dayHTML;
+            });
+        }
+
+        // Initial weather render
+        renderWeather('bali');
+
+        // Weather location change
+        document.getElementById('weather-location').addEventListener('change', (e) => {
+            renderWeather(e.target.value);
+        });
+
+        /*==================== CURRENCY CONVERTER ====================*/
+        // Exchange rates (simplified for demo)
+        const exchangeRates = {
+            'USD': {
+                'EUR': 0.93,
+                'GBP': 0.81,
+                'JPY': 150.28,
+                'AUD': 1.52,
+                'CAD': 1.38,
+                'CNY': 7.13,
+                'IDR': 15741.50,
+                'THB': 35.52
+            },
+            'EUR': {
+                'USD': 1.07,
+                'GBP': 0.88,
+                'JPY': 162.12,
+                'AUD': 1.64,
+                'CAD': 1.49,
+                'CNY': 7.69,
+                'IDR': 16980.75,
+                'THB': 38.32
+            },
+            'GBP': {
+                'USD': 1.23,
+                'EUR': 1.14,
+                'JPY': 185.95,
+                'AUD': 1.88,
+                'CAD': 1.71,
+                'CNY': 8.82,
+                'IDR': 19486.39,
+                'THB': 43.94
+            },
+            // More rates would be added for other currencies
+        };
+
+        // Convert currency
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount-from').value);
+            const fromCurrency = document.getElementById('currency-from').value;
+            const toCurrency = document.getElementById('currency-to').value;
+            
+            if (!amount || isNaN(amount)) {
+                document.getElementById('amount-to').value = '';
+                return;
+            }
+            
+            if (fromCurrency === toCurrency) {
+                document.getElementById('amount-to').value = amount;
+                return;
+            }
+            
+            // Get exchange rate
+            let rate;
+            
+            if (fromCurrency === 'USD') {
+                rate = exchangeRates.USD[toCurrency];
+            } else if (toCurrency === 'USD') {
+                rate = 1 / exchangeRates.USD[fromCurrency];
+            } else if (fromCurrency === 'EUR') {
+                rate = exchangeRates.EUR[toCurrency];
+            } else if (toCurrency === 'EUR') {
+                rate = 1 / exchangeRates.EUR[fromCurrency];
+            } else if (fromCurrency === 'GBP') {
+                rate = exchangeRates.GBP[toCurrency];
+            } else if (toCurrency === 'GBP') {
+                rate = 1 / exchangeRates.GBP[fromCurrency];
+            } else {
+                // Convert via USD
+                const rateToUSD = 1 / exchangeRates.USD[fromCurrency];
+                const rateFromUSD = exchangeRates.USD[toCurrency];
+                rate = rateToUSD * rateFromUSD;
+            }
+            
+            // Calculate and display result
+            const result = amount * rate;
+            document.getElementById('amount-to').value = result.toFixed(2);
+        }
+
+        // Convert button
+        document.getElementById('convert-currency').addEventListener('click', (e) => {
+            e.preventDefault();
+            convertCurrency();
+        });
+
+        // Swap currencies
+        document.getElementById('swap-currency').addEventListener('click', () => {
+            const fromCurrency = document.getElementById('currency-from').value;
+            const toCurrency = document.getElementById('currency-to').value;
+            
+            document.getElementById('currency-from').value = toCurrency;
+            document.getElementById('currency-to').value = fromCurrency;
+            
+            convertCurrency();
+        });
+
+        /*==================== PACKING LIST ====================*/
+        let packingItems = [];
+        const packingForm = document.getElementById('packing-form');
+        const packingInput = document.getElementById('packing-item');
+        const packingItemsList = document.getElementById('packing-items');
+        const itemsCount = document.getElementById('items-count');
+        const clearItemsBtn = document.getElementById('clear-items');
+        const addCommonItemsBtn = document.getElementById('add-common-items');
+
+        // Render packing items
+        function renderPackingItems() {
+            packingItemsList.innerHTML = '';
+            
+            packingItems.forEach((item, index) => {
+                const itemHTML = `
+                    <li class="packing-list__item ${item.checked ? 'checked' : ''}">
+                        <input type="checkbox" class="packing-list__checkbox" data-id="${index}" ${item.checked ? 'checked' : ''}>
+                        <span class="packing-list__text">${item.text}</span>
+                        <button class="packing-list__delete" data-id="${index}">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </li>
+                `;
+                
+                packingItemsList.innerHTML += itemHTML;
+            });
+            
+            // Update items count
+            itemsCount.textContent = packingItems.length;
+        }
+
+        // Add item to packing list
+        packingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const text = packingInput.value.trim();
+            
+            if (text) {
+                packingItems.push({
+                    text,
+                    checked: false
+                });
+                
+                packingInput.value = '';
+                renderPackingItems();
+            }
+        });
+
+        // Toggle item checked state
+        packingItemsList.addEventListener('change', (e) => {
+            if (e.target.classList.contains('packing-list__checkbox')) {
+                const id = parseInt(e.target.getAttribute('data-id'));
+                packingItems[id].checked = e.target.checked;
+                renderPackingItems();
+            }
+        });
+
+        // Delete item
+        packingItemsList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('ri-delete-bin-line') || 
+                e.target.classList.contains('packing-list__delete')) {
+                
+                const button = e.target.classList.contains('packing-list__delete') 
+                    ? e.target 
+                    : e.target.parentElement;
+                
+                const id = parseInt(button.getAttribute('data-id'));
+                packingItems.splice(id, 1);
+                renderPackingItems();
+            }
+        });
+
+        // Clear all items
+        clearItemsBtn.addEventListener('click', () => {
+            packingItems = [];
+            renderPackingItems();
+        });
+
+        // Add common items
+        addCommonItemsBtn.addEventListener('click', () => {
+            const commonItems = [
+                'Passport & Travel Documents',
+                'Swimwear',
+                'Sunscreen',
+                'Beach Towel',
+                'Sunglasses',
+                'Flip-flops',
+                'Hat',
+                'Phone Charger',
+                'Camera',
+                'Medication'
+            ];
+            
+            // Add only items that don't already exist
+            commonItems.forEach(item => {
+                if (!packingItems.some(existing => existing.text === item)) {
+                    packingItems.push({
+                        text: item,
+                        checked: false
+                    });
+                }
+            });
+            
+            renderPackingItems();
+        });
+
+        // Initial render
+        renderPackingItems();
+        
+        // Mobile-first check
+        function checkOrientation() {
+            const isMobile = window.innerWidth < 768;
+            
+            if (isMobile) {
+                // Adjust certain elements for better mobile experience
+                document.querySelectorAll('.booking-form__group').forEach(group => {
+                    group.classList.add('mb-4');
+                });
+            }
+        }
+        
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('load', checkOrientation);
+    </script>
+</body>
+</html>
