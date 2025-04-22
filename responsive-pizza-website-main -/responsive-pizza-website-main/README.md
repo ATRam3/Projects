@@ -1,5 +1,4 @@
 # Responsive Pizza Website
-## [Watch it on youtube](https://youtu.be/02fqr3OY1VM)
 ### Responsive Pizza Website
 
 - Responsive Pizza Website Design Using HTML CSS And JavaScript
